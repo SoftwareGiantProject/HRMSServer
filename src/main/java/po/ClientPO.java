@@ -13,7 +13,7 @@ public class ClientPO implements Serializable{
 		private String password;
 		//信用值ֵ
 		private int credit;
-		//联系方式ʽ
+		//联系方式
 		private String contact;
 		
 		//生日
