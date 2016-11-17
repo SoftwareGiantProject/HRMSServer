@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class ListPO {
 	
-	ArrayList<OrderPO>   list=new ArrayList<>();
+	ArrayList<OrderPO> list=new ArrayList<>();
 	String user_id;
 	String type;
 	
-	//¹¹Ôìº¯Êý
+	
 	public ListPO(){
 		
 	}
