@@ -11,7 +11,7 @@ public class OrderPO {
 	int people;
 	boolean hasChild;
 	
-	//¸÷ÖÖ¿ÉÄÜÓÃµ½µÄ¹¹Ôìº¯Êı
+	//å„ç§å¯èƒ½ç”¨åˆ°çš„æ„é€ å‡½æ•°
 	public OrderPO(){
 		
 	}
@@ -32,7 +32,7 @@ public class OrderPO {
 		
 	}
 	
-	//¸÷ÖÖgetºÍset
+	//å„ç§getå’Œset
 	
 	public OrderPO getOrderPO(String order_id){
 		return this;

@@ -5,22 +5,22 @@ public class HotelPO {
 	//id
 	String hotel_id;
 	
-	//¾ÆµêÃû³Æ
+	//é…’åº—åç§°
 	String hotel_name;
 	
-	//¾ÆµêµØÖ·
+	//é…’åº—åœ°å€Ö·
 	String hotel_address;
 	
-	//¾ÆµêËùÊôÉÌÈ¦
+	//é…’åº—æ‰€å±å•†åœˆ
 	String hotel_area;
 	
-	//¾Æµê¼ò½é
+	//é…’åº—ç®€ä»‹
 	String hotel_intro;
 	
-	//¾ÆµêÉèÊ©·şÎñ
+	//é…’åº—è®¾æ–½æœåŠ¡
 	String hotel_serve;
 	
-	//¾Æµê¿Í·¿ÀàĞÍ
+	//é…’åº—å®¢æˆ¿ç±»å‹
 	String hotel_room;
 	
 	

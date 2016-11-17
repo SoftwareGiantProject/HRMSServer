@@ -1,16 +1,16 @@
 package po;
 
 public class PromotionPO {
-	//促销策略名称
+	//淇冮攢绛栫暐鍚嶇О
 	String promotionName;
 	
-	//促销对象
+	//淇冮攢瀵硅薄
 	String promotionObject;
 	
-	//折扣力度
+	//鎶樻墸鍔涘害
 	double count;
 	
-	//持续时间
+	//鎸佺画鏃堕棿
 	String time;
 	
 	public PromotionPO(){
@@ -24,7 +24,7 @@ public class PromotionPO {
 	}
 	
 	
-	//get和set
+	//get锟斤拷set
 	public PromotionPO getPromotionPO(){
 		return this;
 	}

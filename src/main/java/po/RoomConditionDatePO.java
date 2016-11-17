@@ -6,13 +6,13 @@ import util.RoomConditon;
 
 public class RoomConditionDatePO {
 	
-	//·¿¼äÔ¤¶¨×¡ËŞÊ±¼ä
+	//æˆ¿é—´é¢„å®šä½å®¿æ—¶é—´
 	Date RoomDate;
 		
-	//·¿¼ä±àºÅ
+	//æˆ¿é—´ç¼–å·
 	String RoomNumber;
 		
-	//·¿¼ä×´Ì¬
+	//æˆ¿é—´çŠ¶æ€×´Ì¬
 	RoomConditon roomcondition;
 		
 	public RoomConditionDatePO(){

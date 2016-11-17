@@ -4,19 +4,19 @@ import java.util.Date;
 
 public class HotelEvaluationPO {
 
-	//订单编号
+	//璁㈠崟缂栧彿	
 	String order_id;
 	
-	//客户编号
+	//瀹㈡埛缂栧彿
 	String user_id;
 	
-	//评价时间
+	//璇勪环鏃堕棿
 	Date date;
 	
-	//评价内容
+	//璇勪环鍐呭
 	String data;
 	
-	//评价星级
+	//璇勪环鏄熺骇
 	int level;
 	
 	public HotelEvaluationPO(String order_id, String user_id, Date date, String data, int level){

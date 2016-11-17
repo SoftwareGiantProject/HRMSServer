@@ -1,25 +1,24 @@
 package util;
 
 public enum OrderMessage {
-	SUCCESS,//³É¹¦
-	FAIL,//Ê§°Ü
-	ERROR,//³öÏÖ´íÎó
+	SUCCESS,//æˆåŠŸ	
+	FAIL,//å¤±è´¥
+	ERROR,//å‡ºçŽ°é”™è¯¯
 	
-	AVAILABLE,//¿Í·¿¿ÉÓÃ
-	NOTAVAILABLE,//¿Í·¿²»¿ÉÓÃ
-	EXIST,//ÏëÒªÌí¼ÓµÄ¶«Î÷ÔÚÊý¾Ý¿âÒÑ´æÔÚ
-	TOO_LONG,//ÊäÈëµÄÄÚÈÝ¹ý³¤
-	TOO_SHORT,//ÊäÈëµÄÄÚÈÝ¹ý¶Ì
-	UNVALID,//ÊäÈëµÄÄÚÈÝº¬ÓÐ·Ç·¨×Ö·û
-	NULL, //ÊäÈëµÄÄÚÈÝÎª¿Õ
-	NOT_FOUND,//Ã»ÓÐÕÒµ½ËùÐèÒªµÄÊý¾Ý
-	HAS_CHILDREN,//ÓÐ¶ùÍ¯
-	NO_CHILDREN,//ÎÞ¶ùÍ¯
+	AVAILABLE,//å®¢æˆ¿å¯ç”¨
+	NOTAVAILABLE,//å®¢æˆ¿ä¸å¯ç”¨
+	EXIST,//æƒ³è¦æ·»åŠ çš„ä¸œè¥¿åœ¨æ•°æ®åº“å·²å­˜åœ¨
+	TOO_LONG,//è¾“å…¥çš„å†…å®¹è¿‡é•¿
+	TOO_SHORT,//è¾“å…¥çš„å†…å®¹è¿‡çŸ­
+	UNVALID,//è¾“å…¥çš„å†…å®¹å«æœ‰éžæ³•å­—ç¬¦
+	NULL, //è¾“å…¥çš„å†…å®¹ä¸ºç©º
+	NOT_FOUND,//æ²¡æœ‰æ‰¾åˆ°æ‰€éœ€è¦çš„æ•°æ®
+	HAS_CHILDREN,//æœ‰å„¿ç«¥
+	NO_CHILDREN,//æ— å„¿ç«¥
 	
 	
-	WRONG_ID,//ÓÃ»§id´íÎó
-	WRONG_PASSWORD,//ÃÜÂë´íÎó
-	
+	WRONG_ID,//ç”¨æˆ·idé”™è¯¯
+	WRONG_PASSWORD,//å¯†ç é”™è¯¯
 	
 
 }

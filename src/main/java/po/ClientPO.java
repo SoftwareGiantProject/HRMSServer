@@ -4,19 +4,19 @@ import java.io.Serializable;
 
 public class ClientPO implements Serializable{
 
-	//ÓÃ»§±àºÅ
+	//ç”¨æˆ·ç¼–å·
 		private String userId;
 		
-		//ÓÃ»§Ãû
+		//ç”¨æˆ·å
 		private String userName;
-		//ÃÜÂë
+		//å¯†ç 
 		private String password;
-		//ĞÅÓÃÖµ
+		//ä¿¡ç”¨å€¼Öµ
 		private int credit;
-		//ÁªÏµ·½Ê½
+		//è”ç³»æ–¹å¼Ê½
 		private String contact;
 		
-		//ÉúÈÕ
+		//ç”Ÿæ—¥
 		private String birthday;
 		
 		public ClientPO(){
