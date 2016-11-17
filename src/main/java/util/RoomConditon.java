@@ -2,8 +2,8 @@ package util;
 
 public enum RoomConditon {
     
-	UNRESERVED,//н╢т╓╤╗
-	RESERVED,//рят╓╤╘
-	CHECKIN,//ряхКв║
+	UNRESERVED,//Ф°╙И╒└Е╝ 
+	RESERVED,//Е╥╡И╒└Х╝╒
+	CHECKIN,//Е╥╡Е┘╔Д╫▐
 	
 }

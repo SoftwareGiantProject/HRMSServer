@@ -2,7 +2,7 @@ package util;
 
 public enum MemberType {
 
-	COMMONMEMBER,//��ͨ��Ա
-	CORPORATEMEMBER,//��ҵ��Ա
-	NONE,//�ǻ�Ա
+	COMMONMEMBER,//普通会员	
+	CORPORATEMEMBER,//企业会员
+	NONE,//非会员
 }
