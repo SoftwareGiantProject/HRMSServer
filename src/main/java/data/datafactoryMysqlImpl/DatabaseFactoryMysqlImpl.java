@@ -29,8 +29,33 @@ public class DatabaseFactoryMysqlImpl implements DataFactory{
 	UserDataService userDatabase =  new UserDataServiceMysqlImpl();
 	
 	
-	public DatabaseFactoryMysqlImpl() throws RemoteException{
+	/**
+	 * 单例的唯一实例
+	 */
+	private static DatabaseFactoryMysqlImpl dataFactory;
+	
+	
+	/**
+	 * 构造的私有函数，不能在外部new一个此对象
+	 * @throws RemoteException
+	 */
+	private DatabaseFactoryMysqlImpl() throws RemoteException{
 		
+	}
+	
+	/**
+	 * 获得该单例
+	 * @return
+	 */
+	public static DatabaseFactoryMysqlImpl getInstance(){
+		if(dataFactory == null){
+			try{
+				dataFactory = new DatabaseFactoryMysqlImpl();
+			}catch(RemoteException e){
+				e.printStackTrace();
+			}
+		}
+		return dataFactory;
 	}
 	
 	public UserDataService getUserDatabase() {

@@ -9,6 +9,7 @@ import dataservice.roomdataservice.RoomDataService;
 import dataservice.userdataservice.UserDataService;
 
 public interface DataFactory {
+	
 	/**
 	 * 数据库的抽象工厂
 	 * 每个数据库中都有相同的数据表格
