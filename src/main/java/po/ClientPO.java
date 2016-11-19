@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ClientPO implements Serializable{
 
-	//用户编号
+		//用户编号
 		private String userId;
 		
 		//用户名

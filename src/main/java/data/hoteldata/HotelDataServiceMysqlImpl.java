@@ -1,12 +1,21 @@
 package data.hoteldata;
 
+import data.sqlmanager.SqlManager;
 import dataservice.hoteldataservice.HotelDataService;
 import po.HotelPO;
 import po.RoomPO;
 import util.ResultMessage;
 
+/**
+ * Hotel数据层的具体实现
+ * @author looh
+ *
+ */
 public class HotelDataServiceMysqlImpl implements HotelDataService{
-
+	
+	SqlManager sqlManager = SqlManager.getSqlManager();
+	
+	
 	@Override
 	public RoomPO seekHotel(String hotel_id) {
 		// TODO Auto-generated method stub

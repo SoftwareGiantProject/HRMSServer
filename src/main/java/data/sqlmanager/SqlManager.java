@@ -161,6 +161,8 @@ public class SqlManager {
 		releaseConnection();
 	}
 	
+	
+	
 	public static void main(String[] args) throws SQLException{
 		SqlManager.getSqlManager().getConnection();
 	}

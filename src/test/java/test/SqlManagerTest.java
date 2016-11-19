@@ -15,13 +15,11 @@ public class SqlManagerTest {
 	
 	private SqlManager sqlManager = SqlManager.getSqlManager();
 	
-	
 	@Before
 	public void setUp(){
 		sqlManager.getConnection();
 		
 	}
-	
 	
 	@Test
 	public void test() throws SQLException {
