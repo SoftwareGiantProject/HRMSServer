@@ -15,10 +15,6 @@ public class CreditDataService_Driver {
 			System.out.println("Modify Successfully!");
 		}
 		
-		ResultMessage res2=creditDataService.trade(new CreditPO());
-		if(res2==ResultMessage.SUCCESS){
-			System.out.println("Trade successfully!");
-		}
 	}
 
 }

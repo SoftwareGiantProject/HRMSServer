@@ -30,11 +30,4 @@ public class CreditDataService_Stub implements CreditDataService{
 		return ResultMessage.SUCCESS;
 	}
 
-	@Override
-	public ResultMessage trade(CreditPO po) {
-		// TODO Auto-generated method stub
-		return ResultMessage.SUCCESS;
-	}
-	
-
 }

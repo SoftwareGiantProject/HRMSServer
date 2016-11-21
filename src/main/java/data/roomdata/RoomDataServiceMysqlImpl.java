@@ -45,17 +45,17 @@ public class RoomDataServiceMysqlImpl implements RoomDataService{
 		return ResultMessage.SUCCESS;
 	}
 
+
 	@Override
-	public ResultMessage modify(RoomPO room) {
-		
+	public RoomPO checkOut(RoomPO room_info) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
+
 	@Override
-	public RoomPO find(RoomPO room) {
-		sqlManager.getConnection();
-		
-		
+	public RoomPO reserve(RoomPO room_info) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

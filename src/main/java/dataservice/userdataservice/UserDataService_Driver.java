@@ -68,26 +68,6 @@ public class UserDataService_Driver {
 			System.out.println("Modify Successfully!");
 		}
 		
-		
-		ClientPO cl=userDataService.clientLogin("151250001","151250001");
-		if(cl==new ClientPO()){
-			System.out.println("Login Successfully.");
-		}
-		
-		WorkerPO wl=userDataService. workerLogin("151250002","151250002");
-		if(wl==new WorkerPO()){
-			System.out.println("Login Successfully.");
-		}
-		
-		NetsalePO nsl =userDataService.netsaleLogin("151250003","151250003");
-		if(nsl==new NetsalePO()){
-			System.out.println("Login Successfully.");
-		}
-		
-		NetworkerPO nwl =userDataService.networkerLogin("151250004","151250004");
-		if(nwl==new NetworkerPO()){
-			System.out.println("Login Successfully.");
-		}
 	}
 
 }

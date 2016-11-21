@@ -21,9 +21,14 @@ public interface UserDataService {
 	public ResultMessage modify(NetsalePO po);
 	public ResultMessage modify(NetworkerPO po);
 	
-	public ClientPO clientLogin(String id,String password);
-	public WorkerPO workerLogin(String id,String password);
-	public NetsalePO netsaleLogin(String id,String password);
-	public NetworkerPO networkerLogin(String id,String password);
+	public boolean clientExist(String id);
+	public boolean workerExist(String id);
+	public boolean netsaleExist(String id);
+	public boolean networkerExist(String id);
+	
+	public boolean clientLogin(String id,String password);
+	public boolean workerLogin(String id,String password);
+	public boolean netsaleLogin(String id,String password);
+	public boolean networkerLogin(String id,String password);
 	
 }

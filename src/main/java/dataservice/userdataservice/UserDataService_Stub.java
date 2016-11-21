@@ -93,28 +93,53 @@ public class UserDataService_Stub implements UserDataService{
 		return ResultMessage.SUCCESS;
 	}
 
+
 	@Override
-	public ClientPO clientLogin(String id, String password) {
+	public boolean clientExist(String id) {
 		// TODO Auto-generated method stub
-		return new ClientPO(userid,username,password,credit,contact);
+		return false;
 	}
 
 	@Override
-	public WorkerPO workerLogin(String id, String password) {
+	public boolean workerExist(String id) {
 		// TODO Auto-generated method stub
-		return new WorkerPO(userid,username,password,contact);
+		return false;
 	}
 
 	@Override
-	public NetsalePO netsaleLogin(String id, String password) {
+	public boolean netsaleExist(String id) {
 		// TODO Auto-generated method stub
-		return new NetsalePO(userid,username,password,contact);
+		return false;
 	}
 
 	@Override
-	public NetworkerPO networkerLogin(String id, String password) {
+	public boolean networkerExist(String id) {
 		// TODO Auto-generated method stub
-		return new NetworkerPO(userid,username,password,contact);
+		return false;
+	}
+
+	@Override
+	public boolean clientLogin(String id, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean workerLogin(String id, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean netsaleLogin(String id, String password) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean networkerLogin(String id, String password) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 

@@ -1,5 +1,7 @@
 package data.hoteldata;
 
+import java.util.List;
+
 import data.sqlmanager.SqlManager;
 import dataservice.hoteldataservice.HotelDataService;
 import po.HotelPO;
@@ -36,6 +38,12 @@ public class HotelDataServiceMysqlImpl implements HotelDataService{
 
 	@Override
 	public ResultMessage evaluateHotel(HotelPO po) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<HotelPO> viewHistoryHotel() {
 		// TODO Auto-generated method stub
 		return null;
 	}
