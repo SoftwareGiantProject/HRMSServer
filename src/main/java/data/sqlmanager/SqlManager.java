@@ -4,7 +4,13 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
+
+import javax.naming.spi.DirStateFactory.Result;
 
 /**
  * 数据库管理类
@@ -161,7 +167,139 @@ public class SqlManager {
 		releaseConnection();
 	}
 	
+	/**
+	 * 更新数据库的SQL语句的统一方法
+	 * @param sql
+	 * @return 
+	 */
+	public boolean executeUpdate(String sql){
+		int affectedLine = 0;
+		try{
+			statement = connection.createStatement();
+			affectedLine = statement.executeUpdate(sql);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			releaseStatement();
+		}
+		
+		return affectedLine > 0;
+	}
 	
+	
+	public boolean executeUpdateByList(String sql, List<Object> params){
+		boolean result = false;
+		
+		int affectedLine = 0;
+		
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			if(params != null){
+				for(int i = 0; i < params.size(); i++){
+					preparedStatement.setObject(i+1, params.get(i));
+				}
+			}
+			affectedLine = preparedStatement.executeUpdate();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			releasePreparedStatement();
+		}
+		
+		result = affectedLine > 0;
+		return result;
+	}
+	/**
+	 * 查询单条信息
+	 * @param sql SQL语句
+	 * @param params 参数数组
+	 * @return 单条信息HashMap
+	 */
+	public Map<String,Object> querySimple(String sql, Object[] params){
+		Map<String, Object> map = new HashMap<String , Object>();
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			if(params != null && params.length != 0){
+				for(int i = 0; i < params.length; i++){
+					preparedStatement.setObject(i+1,params[i]);
+				}
+			}
+			resultSet = preparedStatement.executeQuery();
+			ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+			int col_length = resultSetMetaData.getColumnCount();
+			while(resultSet.next()){
+				for(int i = 0; i < col_length; i ++){
+					String key = resultSetMetaData.getColumnName(i+1);
+					Object value = resultSet.getObject(key);
+					if(value == null){
+						value = "";
+					}
+					map.put(key, value);
+				}
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		
+		return map;
+	}
+	
+	/**
+	 * 查询多条信息
+	 * @param sql SQL语句
+	 * @param params 参数数组
+	 * @return 多条信息 HashMap的ArrayList
+	 */
+	public ArrayList<Map<String , Object>> queryMulti(String sql, Object[] params){
+		ArrayList<Map<String, Object>> list = new ArrayList<Map<String , Object>>();
+		
+		try{
+			preparedStatement = connection.prepareStatement(sql);
+			if(params != null && params.length != 0){
+				for(int i = 0 ; i < params.length ; i++){
+					preparedStatement.setObject(i + 1, params[i]);
+				}
+			}
+			resultSet = preparedStatement.executeQuery();
+			ResultSetMetaData  resultSetMetaData = resultSet.getMetaData();
+			int col_length = resultSetMetaData.getColumnCount();
+			while(resultSet.next()){
+				Map<String, Object> map = new HashMap<String, Object>();
+				for(int i = 0; i < col_length; i ++){
+					String key =resultSetMetaData.getColumnName(i+1);
+					Object value = resultSet.getObject(key);
+					if(value == null){
+						value = "";
+					}
+					map.put(key, value);
+				}
+				list.add(map);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	
+	/**
+	 * 补全SQL 参数
+	 * @param sql SQL 语句
+	 * @param num 参数数量
+	 * @return SQL语句
+	 */
+	public String appendSQL(String sql,int num){
+		sql += "(";
+		for(int i = 0; i < num; i++){
+			if(i == num - 1){
+				sql += "?),";
+				break;
+			}
+			sql += "?,";
+		}
+		return sql;
+	}
 	
 	public static void main(String[] args) throws SQLException{
 		SqlManager.getSqlManager().getConnection();
