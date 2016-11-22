@@ -1,5 +1,7 @@
 package dataservice.creditdataservice;
 
+import java.util.ArrayList;
+
 import po.CreditPO;
 import util.ResultMessage;
 
@@ -28,6 +30,12 @@ public class CreditDataService_Stub implements CreditDataService{
 	public ResultMessage modify(CreditPO po) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ArrayList<CreditPO> getHistoryCredit(String user_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

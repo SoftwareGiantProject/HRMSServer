@@ -293,7 +293,7 @@ public class SqlManager {
 		sql += "(";
 		for(int i = 0; i < num; i++){
 			if(i == num - 1){
-				sql += "?),";
+				sql += "?)";
 				break;
 			}
 			sql += "?,";

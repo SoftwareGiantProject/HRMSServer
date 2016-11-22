@@ -44,10 +44,16 @@ public class CreditDataServiceMysqlImpl implements CreditDataService{
 		params.add(po.getId());
 		params.add(po.getCredit());
 		
-		String sql = sqlManager.appendSQL("UPDATE credit SET VALUES WHERE VALUES", params.size());
+		String sql = sqlManager.appendSQL("UPDATE credit SET credit_point=? WHERE client_id=?", params.size());
 		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseConnection();
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ArrayList<CreditPO> getHistoryCredit(String user_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
