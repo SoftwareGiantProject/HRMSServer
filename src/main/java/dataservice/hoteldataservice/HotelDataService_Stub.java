@@ -2,6 +2,7 @@ package dataservice.hoteldataservice;
 
 import java.util.List;
 
+import po.HotelEvaluationPO;
 import po.HotelPO;
 import po.RoomPO;
 import util.ResultMessage;
@@ -27,7 +28,7 @@ public class HotelDataService_Stub implements HotelDataService{
 	}
 
 	@Override
-	public ResultMessage evaluateHotel(HotelPO po) {
+	public ResultMessage evaluateHotel(HotelEvaluationPO po) {
 		// TODO Auto-generated method stub
 		return null;
 	}

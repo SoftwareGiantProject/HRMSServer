@@ -23,13 +23,12 @@ public class CreditDataServiceMysqlImpl implements CreditDataService{
 	@Override
 	public CreditPO find(String user_id) throws RemoteException{
 		CreditPO po = new CreditPO();
+		sqlManager.getConnection();
 		
-		po.setId(user_id);
-		
-		String sql = "SELECT credit_point FROM credit WHERE client_id=?";
-		Map<String, Object> map = sqlManager.querySimple(sql, new Object[]{user_id});
-		
-		po.setCredit(Integer.parseInt(map.get("credit").toString()));
+		ArrayList<CreditPO> list;
+	    list = getHistoryCredit(user_id);
+	    
+	    po = list.get(0);
 		return po;
 	}
 
@@ -41,19 +40,42 @@ public class CreditDataServiceMysqlImpl implements CreditDataService{
 		sqlManager.getConnection();
 		
 		List<Object> params = new ArrayList<Object>();
+		
 		params.add(po.getId());
 		params.add(po.getCredit());
+		params.add(po.getTime());
+		params.add(po.getChange());
 		
-		String sql = sqlManager.appendSQL("UPDATE credit SET credit_point=? WHERE client_id=?", params.size());
+		String sql = sqlManager.appendSQL("INSERT INTO credit VALUES ", params.size());
+		
 		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseConnection();
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
-	public ArrayList<CreditPO> getHistoryCredit(String user_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<CreditPO> getHistoryCredit(String user_id) throws RemoteException{
+		sqlManager.getConnection();
+		
+		ArrayList<CreditPO> list = new ArrayList<CreditPO>();
+		String sql = "SELECT * FROM credit WHERE client_id=? ORDER BY time DESC";
+		List<Map<String, Object>> mapList = sqlManager.queryMulti(sql, new Object[]{user_id});
+		for(Map<String, Object> map : mapList){
+			list.add(getCreditPO(map));
+		}
+		
+		sqlManager.releaseAll();
+		return list;
 	}
 
+	private CreditPO getCreditPO(Map<String, Object> map){
+		
+		CreditPO po = new CreditPO();
+		po.setId(map.get("client_id").toString());
+		po.setCredit(Integer.parseInt(map.get("credit_point").toString()));
+		po.setChange(Integer.parseInt(map.get("change").toString()));
+		po.setTime(map.get("time").toString());
+		
+		return po;
+	}
 }

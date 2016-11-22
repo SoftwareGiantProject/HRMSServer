@@ -6,6 +6,8 @@ public class CreditPO implements Serializable{
 
 	String userId;
 	int credit;
+	String time;
+	int change;
 	
 public CreditPO() {
 	// TODO Auto-generated constructor stub
@@ -33,6 +35,30 @@ public int getCredit(){
 
 public void setCredit(int credit){
 	this.credit = credit;
+}
+
+public String getUserId() {
+	return userId;
+}
+
+public void setUserId(String userId) {
+	this.userId = userId;
+}
+
+public String getTime() {
+	return time;
+}
+
+public void setTime(String time) {
+	this.time = time;
+}
+
+public int getChange() {
+	return change;
+}
+
+public void setChange(int change) {
+	this.change = change;
 }
 
 }
