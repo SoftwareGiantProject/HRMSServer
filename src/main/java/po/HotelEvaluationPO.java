@@ -11,7 +11,7 @@ public class HotelEvaluationPO {
 	String user_id;
 	
 	//评价时间
-	Date date;
+	String date;
 	
 	//评价内容
 	String data;
@@ -19,7 +19,7 @@ public class HotelEvaluationPO {
 	//评价星级
 	int level;
 	
-	public HotelEvaluationPO(String order_id, String user_id, Date date, String data, int level){
+	public HotelEvaluationPO(String order_id, String user_id, String date, String data, int level){
 
 		this.order_id = order_id;
 		this.user_id = user_id;
@@ -28,6 +28,10 @@ public class HotelEvaluationPO {
 		this.level = level;
 	}
 
+	public HotelEvaluationPO(){
+		
+	}
+	
 	public String getOrder_id() {
 		return order_id;
 	}
@@ -44,11 +48,11 @@ public class HotelEvaluationPO {
 		this.user_id = user_id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

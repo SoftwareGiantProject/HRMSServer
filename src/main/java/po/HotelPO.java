@@ -35,6 +35,10 @@ public class HotelPO {
 		this.hotel_serve = hotel_serve;
 	}
 	
+	public HotelPO(){
+		
+	}
+	
 	public String getHotelId(){
 		return hotel_id;
 	}

@@ -34,6 +34,10 @@ public class RoomPO {
 		
 	}
 	
+	public RoomPO(){
+		
+	}
+	
 	public void setRoom_type(String rt){
 		this.Room_type = rt;
 	}

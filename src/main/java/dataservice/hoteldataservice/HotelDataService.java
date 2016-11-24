@@ -10,7 +10,7 @@ import util.*;
 public interface HotelDataService {
 
 
-	public RoomPO seekHotel(String hotel_id) throws RemoteException;
+	public HotelPO seekHotel(String hotel_id) throws RemoteException;
 	public List<HotelPO> viewHistoryHotel() throws RemoteException;
 	
 	public ResultMessage addHotel(HotelPO po) throws RemoteException;
