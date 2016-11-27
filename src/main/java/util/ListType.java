@@ -6,5 +6,5 @@ public enum ListType {
 	HISTORYLIST,//历史订单
 	CURRENTLIST,//现在的订单
 	UNDOLIST,//撤销订单
-	ABNORAMLIST,//异常订单
+	ABNORMALLIST,//异常订单
 }

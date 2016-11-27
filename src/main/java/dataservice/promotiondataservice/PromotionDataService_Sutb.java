@@ -8,7 +8,7 @@ import util.ResultMessage;
 public class PromotionDataService_Sutb implements PromotionDataService{
 
 	@Override
-	public PromotionPO findPromotion(String id) {
+	public PromotionPO findPromotion(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}

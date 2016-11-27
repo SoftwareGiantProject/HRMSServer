@@ -63,7 +63,7 @@ public class HotelPO {
 	}
 	
 	public String getHotelArea(){
-		return hotel_address;
+		return hotel_area;
 	}
 	
 	public void setHotelArea(String hotel_area){

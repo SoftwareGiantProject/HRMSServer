@@ -24,12 +24,12 @@ public class HotelDataServiceMysqlImpl implements HotelDataService{
 	
 	
 	@Override
-	public HotelPO seekHotel(String hotel_id) throws RemoteException {
+	public HotelPO seekHotel(String hotel_name) throws RemoteException {
 		sqlManager.getConnection();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		String sql = "SELECT * FROM hotel WHERE hotel_id=?";
-		map = sqlManager.querySimple(sql, new Object[]{hotel_id});
+		String sql = "SELECT * FROM hotel WHERE name=?";
+		map = sqlManager.querySimple(sql, new Object[]{hotel_name});
 		
 		HotelPO po = getHotelPO(map);
 		
@@ -64,7 +64,33 @@ public class HotelDataServiceMysqlImpl implements HotelDataService{
 
 	@Override
 	public ResultMessage modifyHotel(HotelPO po) throws RemoteException {
-		return null;
+		if(po == null)
+			return ResultMessage.FAIL;
+		
+		sqlManager.getConnection();
+		
+		/*
+		List<Object> params = new ArrayList<Object>();
+		
+		params.add(po.getHotelName());
+		params.add(po.getHotelAddress());
+		params.add(po.getHotelArea());
+		params.add(po.getHotelIntro());
+		params.add(po.getHotelServe());
+		params.add(po.getHotelRoom());
+		*/
+		
+		String sql = "UPDATE hotel SET" + "name=" + po.getHotelName() + "," +
+				      "address=" + po.getHotelAddress() + "," +
+				      "area=" + po.getHotelAddress() + "," +
+				      "intro=" + po.getHotelIntro() + "," +
+				      "serve=" + po.getHotelServe() + "," +
+				      "room=" + po.getHotelRoom() + 
+				      "WHERE" + "id=" + po.getHotelId();
+		
+		sqlManager.executeUpdate(sql);
+		sqlManager.releaseAll();
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
@@ -90,7 +116,7 @@ public class HotelDataServiceMysqlImpl implements HotelDataService{
 	}
 
 	@Override
-	public List<HotelPO> viewHistoryHotel() throws RemoteException{
+	public ArrayList<HotelPO> viewHistoryHotel() throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,5 +1,6 @@
 package po;
 
+import util.ListType;
 
 public class OrderPO {
 	String user_id;
@@ -10,7 +11,26 @@ public class OrderPO {
 	String executeTime;
 	int people;
 	boolean hasChild;
+	ListType listType;
 	
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getOrder_id() {
+		return order_id;
+	}
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
+	}
+	public ListType getListType() {
+		return listType;
+	}
+	public void setListType(ListType listType) {
+		this.listType = listType;
+	}
 	//各种可能用到的构造函数
 	public OrderPO(){
 		

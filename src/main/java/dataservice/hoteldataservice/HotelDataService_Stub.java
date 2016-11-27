@@ -1,5 +1,6 @@
 package dataservice.hoteldataservice;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import po.HotelEvaluationPO;
@@ -10,7 +11,7 @@ import util.ResultMessage;
 public class HotelDataService_Stub implements HotelDataService{
 
 	@Override
-	public HotelPO seekHotel(String hotel_id) {
+	public HotelPO seekHotel(String hotel_name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -34,7 +35,7 @@ public class HotelDataService_Stub implements HotelDataService{
 	}
 
 	@Override
-	public List<HotelPO> viewHistoryHotel() {
+	public ArrayList<HotelPO> viewHistoryHotel() {
 		// TODO Auto-generated method stub
 		return null;
 	}
