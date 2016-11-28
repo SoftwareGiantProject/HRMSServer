@@ -1,5 +1,6 @@
 package data.promotiondata;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +17,7 @@ public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 	private SqlManager sqlManager = SqlManager.getSqlManager();
 	
 	@Override
-	public MemberPromotionPO findMemberPromotion(String name){
+	public MemberPromotionPO findMemberPromotion(String name) throws RemoteException{
 		sqlManager.getConnection();
 		
 		Map<String , Object> map = new HashMap<String , Object>();
@@ -30,7 +31,7 @@ public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 	}
 	
 	@Override
-	public PromotionPO findPromotion(String name) {
+	public PromotionPO findPromotion(String name)  throws RemoteException{
 		sqlManager.getConnection();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -44,7 +45,7 @@ public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 	}
 
 	@Override
-	public ResultMessage addPromotion(PromotionPO po) {
+	public ResultMessage addPromotion(PromotionPO po) throws RemoteException {
 		if(po == null)
 			return ResultMessage.FAIL;
 		
@@ -67,7 +68,7 @@ public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 	}
 
 	@Override
-	public ResultMessage modifyPromotion(PromotionPO po) {
+	public ResultMessage modifyPromotion(PromotionPO po) throws RemoteException {
 		if(po == null)
 			return ResultMessage.FAIL;
 		
@@ -81,7 +82,7 @@ public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 		params.add(po.getSeller());
 		params.add(po.getPromotionName());
 		
-		String sql = "UPDATE promotion SET object=? , time=? , count=? WHERE name=?";
+		String sql = "UPDATE promotion SET object=? , time=? , count=? ,seller=? WHERE name=?";
 		
 		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseAll();
@@ -89,13 +90,25 @@ public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 	}
 
 	@Override
-	public ResultMessage delPromotion(PromotionPO po) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage delPromotion(PromotionPO po) throws RemoteException {
+		if(po == null)
+			return ResultMessage.FAIL;
+		
+		sqlManager.getConnection();
+		List<Object> params = new ArrayList<Object>();
+		
+		params.add(po.getPromotionName());
+		params.add(po.getSeller());
+		
+		String sql = "DELETE FROM promotion WHERE name=? AND seller=?";
+		
+		sqlManager.executeUpdateByList(sql, params);
+		sqlManager.releaseAll();
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
-	public ArrayList<PromotionPO> getAllPromotion() {
+	public ArrayList<PromotionPO> getAllPromotion()  throws RemoteException{
 		sqlManager.getConnection();
 		
 		ArrayList<PromotionPO> list = new ArrayList<PromotionPO>();
@@ -112,7 +125,7 @@ public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 	}
 
 	@Override
-	public ResultMessage addMemberPromotion(MemberPromotionPO po) {
+	public ResultMessage addMemberPromotion(MemberPromotionPO po) throws RemoteException {
 		if(po == null)
 			return ResultMessage.FAIL;
 		
