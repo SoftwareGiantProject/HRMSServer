@@ -69,7 +69,7 @@ public class HotelDataServiceMysqlImpl implements HotelDataService{
 		
 		sqlManager.getConnection();
 		
-		/*
+		
 		List<Object> params = new ArrayList<Object>();
 		
 		params.add(po.getHotelName());
@@ -78,17 +78,11 @@ public class HotelDataServiceMysqlImpl implements HotelDataService{
 		params.add(po.getHotelIntro());
 		params.add(po.getHotelServe());
 		params.add(po.getHotelRoom());
-		*/
+		params.add(po.getHotelId());
 		
-		String sql = "UPDATE hotel SET" + "name=" + po.getHotelName() + "," +
-				      "address=" + po.getHotelAddress() + "," +
-				      "area=" + po.getHotelAddress() + "," +
-				      "intro=" + po.getHotelIntro() + "," +
-				      "serve=" + po.getHotelServe() + "," +
-				      "room=" + po.getHotelRoom() + 
-				      "WHERE" + "id=" + po.getHotelId();
-		
-		sqlManager.executeUpdate(sql);
+		String sql = "UPDATE hotel SET name=? , address=? , area=? , intro=? , serve= ? , room=? WHERE id=?";
+
+		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseAll();
 		return ResultMessage.SUCCESS;
 	}

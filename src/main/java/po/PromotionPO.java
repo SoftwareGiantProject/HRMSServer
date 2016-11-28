@@ -2,16 +2,19 @@ package po;
 
 public class PromotionPO {
 	//促销策略名称
-	String promotionName;
+	private String promotionName;
 	
 	//促销对象
-	String promotionObject;
+    private String promotionObject;
 	
 	//折扣力度
-	double count;
+	private double count;
 	
 	//持续时间
-	String time;
+	private String time;
+	
+	//促销策略商家
+	private String seller;
 	
 	public PromotionPO(){
 		
@@ -24,7 +27,13 @@ public class PromotionPO {
 	}
 	
 	
-	//get��set
+	//get&set
+	public String getSeller() {
+		return seller;
+	}
+	public void setSeller(String seller) {
+		this.seller = seller;
+	}
 	public PromotionPO getPromotionPO(){
 		return this;
 	}

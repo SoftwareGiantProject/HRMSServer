@@ -2,6 +2,7 @@ package dataservice.promotiondataservice;
 
 import java.util.ArrayList;
 
+import po.MemberPromotionPO;
 import po.PromotionPO;
 import util.ResultMessage;
 
@@ -38,7 +39,13 @@ public class PromotionDataService_Sutb implements PromotionDataService{
 	}
 
 	@Override
-	public ResultMessage addMemberPromotion(PromotionPO po) {
+	public ResultMessage addMemberPromotion(MemberPromotionPO po) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MemberPromotionPO findMemberPromotion(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}

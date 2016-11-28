@@ -7,12 +7,27 @@ import java.util.Map;
 
 import data.sqlmanager.SqlManager;
 import dataservice.promotiondataservice.PromotionDataService;
+import po.MemberPromotionPO;
 import po.PromotionPO;
 import util.ResultMessage;
 
 public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 
 	private SqlManager sqlManager = SqlManager.getSqlManager();
+	
+	@Override
+	public MemberPromotionPO findMemberPromotion(String name){
+		sqlManager.getConnection();
+		
+		Map<String , Object> map = new HashMap<String , Object>();
+		String sql = "SELECT * FROM memberPromotion WHERE name=?";
+		map = sqlManager.querySimple(sql, new Object[]{name});
+		
+		MemberPromotionPO po = getMemberPromotionPO(map);
+		
+		sqlManager.releaseAll();
+		return po;
+	}
 	
 	@Override
 	public PromotionPO findPromotion(String name) {
@@ -41,6 +56,7 @@ public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 		params.add(po.getPromotionObject());
 		params.add(po.getTime());
 		params.add(po.getCount());
+		params.add(po.getSeller());
 		
 		String sql = sqlManager.appendSQL("INSERT INTO promotion VALUES", params.size());
 		
@@ -52,8 +68,24 @@ public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 
 	@Override
 	public ResultMessage modifyPromotion(PromotionPO po) {
-		// TODO Auto-generated method stub
-		return null;
+		if(po == null)
+			return ResultMessage.FAIL;
+		
+		sqlManager.getConnection();
+		
+		List<Object> params = new ArrayList<Object>();
+		
+		params.add(po.getPromotionObject());
+		params.add(po.getTime());
+		params.add(po.getCount());
+		params.add(po.getSeller());
+		params.add(po.getPromotionName());
+		
+		String sql = "UPDATE promotion SET object=? , time=? , count=? WHERE name=?";
+		
+		sqlManager.executeUpdateByList(sql, params);
+		sqlManager.releaseAll();
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
@@ -80,11 +112,37 @@ public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 	}
 
 	@Override
-	public ResultMessage addMemberPromotion(PromotionPO po) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMessage addMemberPromotion(MemberPromotionPO po) {
+		if(po == null)
+			return ResultMessage.FAIL;
+		
+		sqlManager.getConnection();
+		List<Object> params  = new ArrayList<Object>();
+		
+		params.add(po.getPromotionName());
+		params.add(po.getPromotionObject());
+		params.add(po.getTime());
+		params.add(po.getCount());
+		params.add(po.getArea());
+		
+		String sql = sqlManager.appendSQL("INSERT INTO memberPromotion VALUES", params.size());
+		
+		sqlManager.executeUpdateByList(sql, params);
+		sqlManager.releaseConnection();
+		
+		return ResultMessage.SUCCESS;
 	}
 
+	private MemberPromotionPO getMemberPromotionPO(Map<String, Object> map){
+		MemberPromotionPO po = new MemberPromotionPO();
+		
+		po.setPromotionName(map.get("name").toString());
+		po.setTime(map.get("time").toString());
+		po.setCount(Double.parseDouble(map.get("count").toString()));
+		po.setArea(map.get("area").toString());
+		
+		return po;
+	}
 	
 	private PromotionPO getPromotionPO(Map<String, Object> map){
 		PromotionPO po = new PromotionPO();
@@ -93,6 +151,7 @@ public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 		po.setPromotionObject(map.get("object").toString());
 		po.setTime(map.get("time").toString());
 		po.setCount(Double.parseDouble(map.get("count").toString()));
+		po.setSeller(map.get("seller").toString());
 		
 		return po;
 	}
