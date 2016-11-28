@@ -21,6 +21,12 @@ public class CreditDataServiceMysqlImpl implements CreditDataService{
 	}
 	
 	@Override
+	public int getCredit(String user_id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
 	public CreditPO find(String user_id) throws RemoteException{
 		CreditPO po = new CreditPO();
 		sqlManager.getConnection();
@@ -78,4 +84,5 @@ public class CreditDataServiceMysqlImpl implements CreditDataService{
 		
 		return po;
 	}
+
 }

@@ -6,7 +6,6 @@ public class ClientPO implements Serializable{
 
 		//用户编号
 		private String userId;
-		
 		//用户名
 		private String userName;
 		//密码
@@ -15,7 +14,6 @@ public class ClientPO implements Serializable{
 		private int credit;
 		//联系方式
 		private String contact;
-		
 		//生日
 		private String birthday;
 		

@@ -8,6 +8,7 @@ import util.*;
 
 public interface CreditDataService {
 
+	public int getCredit(String user_id) throws RemoteException;
 	public CreditPO find(String user_id) throws RemoteException;
 	public ResultMessage modify(CreditPO po) throws RemoteException;
 	

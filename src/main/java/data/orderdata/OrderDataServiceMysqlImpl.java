@@ -1,5 +1,6 @@
 package data.orderdata;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +18,7 @@ public class OrderDataServiceMysqlImpl implements OrderDataService{
 	SqlManager sqlManager = SqlManager.getSqlManager();
 	
 	@Override
-	public OrderPO findOrder(String order_id) {
+	public OrderPO findOrder(String order_id) throws RemoteException {
 		sqlManager.getConnection();
 		
 		Map<String, Object> map  = new HashMap<String, Object>();
@@ -29,7 +30,7 @@ public class OrderDataServiceMysqlImpl implements OrderDataService{
 	}
 
 	@Override
-	public ResultMessage addOrder(OrderPO order) {
+	public ResultMessage addOrder(OrderPO order) throws RemoteException {
 		if(order == null){
 			return ResultMessage.FAIL;
 		}
@@ -45,23 +46,44 @@ public class OrderDataServiceMysqlImpl implements OrderDataService{
 		params.add(order.getExecuteTime());
 		params.add(order.getPeople());
 		params.add(order.isHasChild());
-		params.add(order.getListType());
+		params.add(order.getListType().toString());
 		
 		String sql = sqlManager.appendSQL("INSERT INTO order VALUES", params.size());
-		
+		System.out.println(sql);
 		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseConnection();
 		return null;
 	}
 
 	@Override
-	public ResultMessage undoOrder(OrderPO order) {
-		// TODO Auto-generated method stub
+	public ResultMessage undoOrder(OrderPO order) throws RemoteException {
+		if(order == null)
+			return ResultMessage.FAIL;
+		
+		sqlManager.getConnection();
+		
+
+		List<Object> params = new ArrayList<Object>();
+		
+		params.add(order.getUser_id());
+		params.add(order.getStartTime());
+		params.add(order.getEndTime());
+		params.add(order.getDeadline());
+		params.add(order.getExecuteTime());
+		params.add(order.getPeople());
+		params.add(order.isHasChild());
+		params.add("canceled");
+		params.add(order.getOrder_id());
+		
+		String sql = "UPDATE order SET user_id=?,startTime=?,endTime=?,deadline=?,executeTime=?,people=?,child=?,listType=? WHERE order_id=?";
+		
+		sqlManager.executeUpdateByList(sql, params);
+		sqlManager.releaseAll();
 		return null;
 	}
 
 	@Override
-	public ResultMessage modifyOrder(OrderPO order) {
+	public ResultMessage modifyOrder(OrderPO order) throws RemoteException {
 		if(order == null)
 			return ResultMessage.FAIL;
 		
@@ -69,13 +91,25 @@ public class OrderDataServiceMysqlImpl implements OrderDataService{
 		
 		List<Object> params = new ArrayList<Object>();
 		
-		params.add(order.getOrder_id());
 		params.add(order.getUser_id());
-		return null;
+		params.add(order.getStartTime());
+		params.add(order.getEndTime());
+		params.add(order.getDeadline());
+		params.add(order.getExecuteTime());
+		params.add(order.getPeople());
+		params.add(order.isHasChild());
+		params.add(order.getListType().toString());
+		params.add(order.getOrder_id());
+		
+		String sql = "UPDATE order SET user_id=?,startTime=?,endTime=?,deadline=?,executeTime=?,people=?,child=?,listType=? WHERE order_id=?";
+		
+		sqlManager.executeUpdateByList(sql, params);
+		sqlManager.releaseAll();
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
-	public ArrayList<OrderPO> findList(String ListType) {
+	public ArrayList<OrderPO> findList(String ListType) throws RemoteException {
 		
 		switch(ListType){
 		case"ALLLIST":{
@@ -88,11 +122,64 @@ public class OrderDataServiceMysqlImpl implements OrderDataService{
 				list.add(getOrderPO(map));
 			}
 			sqlManager.releaseAll();
-			break;
+			return list;
 		}
 		
+		case"HISTORY":{
+			sqlManager.getConnection();
+			
+			ArrayList<OrderPO> list = new ArrayList<OrderPO>();
+			String sql = "SELECT * FROM order WHERE listType<>'current' ORDER BY order_id DESC";
+			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+			for(Map<String , Object> map : mapList){
+				list.add(getOrderPO(map));
+			}
+			sqlManager.releaseAll();
+			return list;
 		}
-		return null;
+		
+		case"CURRENTLIST":{
+			sqlManager.getConnection();
+			
+			ArrayList<OrderPO> list = new ArrayList<OrderPO>();
+			String sql = "SELECT * FROM order WHERE listType='current' ORDER BY order_id DESC";
+			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+			for(Map<String , Object> map : mapList){
+				list.add(getOrderPO(map));
+			}
+			sqlManager.releaseAll();
+			return list;
+		}
+		
+		case"UNDOLIST":{
+			sqlManager.getConnection();
+			
+			ArrayList<OrderPO> list = new ArrayList<OrderPO>();
+			String sql = "SELECT * FROM order WHERE listType='canceled' ORDER BY order_id DESC";
+			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+			for(Map<String , Object> map : mapList){
+				list.add(getOrderPO(map));
+			}
+			sqlManager.releaseAll();
+			return list;
+		}
+		
+		case"ABNORMALLIST":{
+			sqlManager.getConnection();
+			
+			ArrayList<OrderPO> list = new ArrayList<OrderPO>();
+			String sql = "SELECT * FROM order WHERE listType='abnormal' ORDER BY order_id DESC";
+			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+			for(Map<String , Object> map : mapList){
+				list.add(getOrderPO(map));
+			}
+			sqlManager.releaseAll();
+			return list;
+		}
+		
+		default:
+			return null;
+		}
 	}
 
 	
