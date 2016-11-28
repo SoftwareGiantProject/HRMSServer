@@ -48,7 +48,22 @@ public class RoomDataServiceMysqlImpl implements RoomDataService{
 
 	@Override
 	public RoomPO checkOut(RoomPO room_info) {
-		// TODO Auto-generated method stub
+		if(room_info == null){
+			return null;
+		}
+		
+		sqlManager.getConnection();
+		
+		List<Object> params= new ArrayList<Object>();
+		
+		params.add("unreserved");
+		params.add(room_info.getHotel_id());
+		params.add(room_info.getRoom_number());
+		
+		String sql = "UPDATE room SET condition=? WHERE hotel_id=?, room_id=?";
+		
+		sqlManager.executeUpdateByList(sql, params);
+		sqlManager.releaseAll();
 		return null;
 	}
 

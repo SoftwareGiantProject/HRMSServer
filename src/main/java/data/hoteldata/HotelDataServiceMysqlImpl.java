@@ -22,6 +22,9 @@ public class HotelDataServiceMysqlImpl implements HotelDataService{
 	
 	SqlManager sqlManager = SqlManager.getSqlManager();
 	
+	public HotelDataServiceMysqlImpl() throws RemoteException {
+		super();
+	}
 	
 	@Override
 	public HotelPO seekHotel(String hotel_name) throws RemoteException {

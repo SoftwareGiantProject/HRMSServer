@@ -16,6 +16,10 @@ public class PromotionDataServiceMysqlImpl implements PromotionDataService{
 
 	private SqlManager sqlManager = SqlManager.getSqlManager();
 	
+	public PromotionDataServiceMysqlImpl() throws RemoteException{
+		super();
+	}
+	
 	@Override
 	public MemberPromotionPO findMemberPromotion(String name) throws RemoteException{
 		sqlManager.getConnection();

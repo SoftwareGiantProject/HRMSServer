@@ -37,14 +37,14 @@ public class OrderDataServiceMysqlImpl implements OrderDataService{
 		sqlManager.getConnection();
 		List<Object>  params  = new ArrayList<Object>();
 		
-		params.add(order.getOrderID());
-		params.add(order.getUserName());
+		params.add(order.getOrder_id());
+		params.add(order.getUser_id());
 		params.add(order.getStartTime());
 		params.add(order.getEndTime());
 		params.add(order.getDeadline());
 		params.add(order.getExecuteTime());
 		params.add(order.getPeople());
-		params.add(order.getHasChild());
+		params.add(order.isHasChild());
 		params.add(order.getListType());
 		
 		String sql = sqlManager.appendSQL("INSERT INTO order VALUES", params.size());
@@ -62,7 +62,15 @@ public class OrderDataServiceMysqlImpl implements OrderDataService{
 
 	@Override
 	public ResultMessage modifyOrder(OrderPO order) {
-		// TODO Auto-generated method stub
+		if(order == null)
+			return ResultMessage.FAIL;
+		
+		sqlManager.getConnection();
+		
+		List<Object> params = new ArrayList<Object>();
+		
+		params.add(order.getOrder_id());
+		params.add(order.getUser_id());
 		return null;
 	}
 
@@ -91,8 +99,8 @@ public class OrderDataServiceMysqlImpl implements OrderDataService{
 	private OrderPO getOrderPO(Map<String, Object> map){
 		OrderPO po = new OrderPO();
 		
-		po.setOrderID(map.get("order_id").toString());
-		po.setUserName(map.get("user_id").toString());
+		po.setOrder_id(map.get("order_id").toString());
+		po.setUser_id(map.get("user_id").toString());
 		po.setStartTime(map.get("startTime").toString());
 		po.setEndTime(map.get("endTime").toString());
 		po.setDeadline(map.get("deadline").toString());

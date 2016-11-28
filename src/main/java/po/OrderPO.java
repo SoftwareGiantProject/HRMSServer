@@ -12,25 +12,7 @@ public class OrderPO {
 	int people;
 	boolean hasChild;
 	ListType listType;
-	
-	public String getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
-	public String getOrder_id() {
-		return order_id;
-	}
-	public void setOrder_id(String order_id) {
-		this.order_id = order_id;
-	}
-	public ListType getListType() {
-		return listType;
-	}
-	public void setListType(ListType listType) {
-		this.listType = listType;
-	}
+
 	//各种可能用到的构造函数
 	public OrderPO(){
 		
@@ -52,59 +34,63 @@ public class OrderPO {
 		
 	}
 	
-	//各种get和set
 	
-	public OrderPO getOrderPO(String order_id){
-		return this;
-	}
-	public String getUserName(){
+	//各种get和set
+	public String getUser_id() {
 		return user_id;
 	}
-	public String getOrderID(){
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getOrder_id() {
 		return order_id;
 	}
-	public String getDeadline(){
-		return deadline;
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
 	}
-	public String getExecuteTime(){
-		return executeTime;
-	}
-	public String getStartTime(){
+	public String getStartTime() {
 		return startTime;
 	}
-	public String getEndTime(){
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+	public String getEndTime() {
 		return endTime;
 	}
-	public int getPeople(){
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+	public String getDeadline() {
+		return deadline;
+	}
+	public void setDeadline(String deadline) {
+		this.deadline = deadline;
+	}
+	public String getExecuteTime() {
+		return executeTime;
+	}
+	public void setExecuteTime(String executeTime) {
+		this.executeTime = executeTime;
+	}
+	public int getPeople() {
 		return people;
 	}
-	public boolean getHasChild(){
+	public void setPeople(int people) {
+		this.people = people;
+	}
+	public boolean isHasChild() {
 		return hasChild;
 	}
+	public void setHasChild(boolean hasChild) {
+		this.hasChild = hasChild;
+	}
+	public ListType getListType() {
+		return listType;
+	}
+	public void setListType(ListType listType) {
+		this.listType = listType;
+	}
+
 	
-	public void setUserName(String user_id){
-		this.user_id=user_id;
-	}
-	public void setOrderID(String order_id){
-		this.order_id=order_id;
-	}
-	public void setDeadline(String deadline){
-		this.deadline=deadline;
-	}
-	public void setExecuteTime(String executeTime){
-		this.executeTime=executeTime;
-	}
-	public void setStartTime(String startTime){
-		this.startTime=startTime;
-	}
-	public void setEndTime(String endTime){
-		this.endTime=endTime;
-	}
-	public void setPeople(int people){
-		this.people=people;
-	}
-	public void setHasChild(boolean hasChild){
-		this.hasChild=hasChild;
-	}
 	
 }
