@@ -1,12 +1,13 @@
 package dataservice.orderdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.*;
 import util.*;
 
-public interface OrderDataService {
+public interface OrderDataService extends Remote{
 
 	
 	public OrderPO findOrder(String order_id) throws RemoteException;

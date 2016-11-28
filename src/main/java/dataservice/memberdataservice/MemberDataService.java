@@ -1,12 +1,13 @@
 package dataservice.memberdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.*;
 import util.*;
 
-public interface MemberDataService {
+public interface MemberDataService extends Remote{
 
 	public ArrayList<CommonMemberPO> getComMember() throws RemoteException;
 	public ArrayList<CorporateMemberPO> getCorMember() throws RemoteException;

@@ -1,12 +1,13 @@
 package dataservice.roomdataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import po.*;
 import util.*;
 
 
-public interface RoomDataService {
+public interface RoomDataService extends Remote{
 
 	public ResultMessage add(RoomPO room) throws RemoteException;
 	

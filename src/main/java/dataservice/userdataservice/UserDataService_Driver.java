@@ -1,5 +1,7 @@
 package dataservice.userdataservice;
 
+import java.rmi.RemoteException;
+
 import po.ClientPO;
 import po.NetsalePO;
 import po.NetworkerPO;
@@ -7,7 +9,7 @@ import po.WorkerPO;
 import util.ResultMessage;
 
 public class UserDataService_Driver {
-	public void drive(UserDataService userDataService){
+	public void drive(UserDataService userDataService) throws RemoteException{
 		ResultMessage res1=userDataService.add(new ClientPO());
 		if(res1==ResultMessage.SUCCESS){
 			System.out.println("Add Successfully!");

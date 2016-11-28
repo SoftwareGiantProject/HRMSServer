@@ -1,5 +1,6 @@
 package dataservice.hoteldataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import po.*;
 import util.*;
 
 
-public interface HotelDataService {
+public interface HotelDataService extends Remote{
 
 
 	public HotelPO seekHotel(String hotel_name) throws RemoteException;

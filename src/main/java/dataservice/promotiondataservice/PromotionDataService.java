@@ -1,12 +1,13 @@
 package dataservice.promotiondataservice;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import po.*;
 import util.*;
 
-public interface PromotionDataService {
+public interface PromotionDataService extends Remote{
 
 	public PromotionPO findPromotion(String name) throws RemoteException;
 	public MemberPromotionPO findMemberPromotion(String name) throws RemoteException;

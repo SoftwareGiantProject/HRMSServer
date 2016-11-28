@@ -1,5 +1,8 @@
 package dataservice.datafactory;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 import dataservice.creditdataservice.CreditDataService;
 import dataservice.hoteldataservice.HotelDataService;
 import dataservice.memberdataservice.MemberDataService;
@@ -8,7 +11,7 @@ import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.roomdataservice.RoomDataService;
 import dataservice.userdataservice.UserDataService;
 
-public interface DataFactory {
+public interface DataFactory extends Remote {
 	
 	/**
 	 * 数据库的抽象工厂
@@ -17,18 +20,18 @@ public interface DataFactory {
 	 * @return
 	 */
 
-	public UserDataService getUserDatabase();
+	public UserDataService getUserDatabase()throws RemoteException;
 	
-	public MemberDataService getMemberDatabase();
+	public MemberDataService getMemberDatabase()throws RemoteException;
 	
-	public PromotionDataService getPromotionDatabase();
+	public PromotionDataService getPromotionDatabase()throws RemoteException;
 	
-	public CreditDataService getCreditDatabase();
+	public CreditDataService getCreditDatabase()throws RemoteException;
 	
-	public OrderDataService getOrderDatabase();
+	public OrderDataService getOrderDatabase()throws RemoteException;
 	
-	public HotelDataService getHotelDatabase();
+	public HotelDataService getHotelDatabase()throws RemoteException;
 	
-	public RoomDataService getRoomDatabase();
+	public RoomDataService getRoomDatabase()throws RemoteException;
 	
 }

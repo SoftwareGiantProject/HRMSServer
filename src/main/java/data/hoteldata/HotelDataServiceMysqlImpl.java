@@ -72,7 +72,6 @@ public class HotelDataServiceMysqlImpl implements HotelDataService{
 		
 		sqlManager.getConnection();
 		
-		
 		List<Object> params = new ArrayList<Object>();
 		
 		params.add(po.getHotelName());

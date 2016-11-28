@@ -2,79 +2,82 @@ package po;
 
 import java.io.Serializable;
 
+import util.MemberType;
+
 public class ClientPO implements Serializable{
 
-		//用户编号
 		private String userId;
-		//用户名
+		private String memberId;
 		private String userName;
-		//密码
 		private String password;
-		//信用值ֵ
 		private int credit;
-		//联系方式
 		private String contact;
-		//生日
 		private String birthday;
+		private MemberType type;
 		
 		public ClientPO(){
 			
 		}
 		
-		public ClientPO(String userId,String userName,
-				String password,int credit,String contact){
+		public ClientPO(String userId,String memberId,String userName,
+				String password,int credit,String contact,String birthday,MemberType type){
 			super();
 			this.userId=userId;
-			
+			this.memberId = memberId;
 			this.userName=userName;
 			this.password=password;
 			this.credit=credit;
 			this.contact=contact;
-			
+			this.birthday = birthday;
+			this.type = type;
 		}
-		
-		public String getPassword(){
-			return password;
-		}
-		
-		public void setPassword(String password){
-			this.password=password;
-		}
-		
-		
-		
-		public String getUserId(){
+
+		public String getUserId() {
 			return userId;
 		}
-		
-		public void setUserId(String userId){
-			this.userId=userId;
+
+		public void setUserId(String userId) {
+			this.userId = userId;
 		}
-		
-		
-		
-		public String getUserName(){
+
+		public String getMemberId() {
+			return memberId;
+		}
+
+		public void setMemberId(String memberId) {
+			this.memberId = memberId;
+		}
+
+		public String getUserName() {
 			return userName;
 		}
-		
-		public void setUserName(String userName){
-			this.userName=userName;
+
+		public void setUserName(String userName) {
+			this.userName = userName;
 		}
-		
-		public String getContact(){
-			return contact;
+
+		public String getPassword() {
+			return password;
 		}
-		
-		public void setContact(String contact){
-			this.userName=contact;
+
+		public void setPassword(String password) {
+			this.password = password;
 		}
-		
-		public int getCredit(){
+
+		public int getCredit() {
 			return credit;
 		}
-		
-		public void setCredit(int credit){
-			this.credit=credit;
+
+		public void setCredit(int credit) {
+			this.credit = credit;
+		}
+
+		public String getContact() {
+			return contact;
+		}
+
+		public void setContact(String contact) {
+			this.contact = contact;
 		}
 
 		public String getBirthday() {
@@ -84,4 +87,14 @@ public class ClientPO implements Serializable{
 		public void setBirthday(String birthday) {
 			this.birthday = birthday;
 		}
+
+		public MemberType getType() {
+			return type;
+		}
+
+		public void setType(MemberType type) {
+			this.type = type;
+		}
+		
+		
 }

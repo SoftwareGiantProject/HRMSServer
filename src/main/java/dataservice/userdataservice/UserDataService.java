@@ -1,34 +1,37 @@
 package dataservice.userdataservice;
 
 import java.awt.List;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 import po.*;
 import util.*;
 
-public interface UserDataService {
+public interface UserDataService extends Remote{
 
-	public ResultMessage add(ClientPO po);
-	public ResultMessage add(WorkerPO po);
-	public ResultMessage add(NetsalePO po);
-	public ResultMessage add(NetworkerPO po);
+	public ResultMessage add(ClientPO po)throws RemoteException;
+	public ResultMessage add(WorkerPO po)throws RemoteException;
+	public ResultMessage add(NetsalePO po)throws RemoteException;
+	public ResultMessage add(NetworkerPO po)throws RemoteException;
 	
-	public WorkerPO findWorker(String id);
-	public ClientPO findClient(String id);
-	public NetsalePO findNetsale(String id);
-	public NetworkerPO findNetworker(String id);
+	public WorkerPO findWorker(String id)throws RemoteException;
+	public ClientPO findClient(String id)throws RemoteException;
+	public NetsalePO findNetsale(String id)throws RemoteException;
+	public NetworkerPO findNetworker(String id)throws RemoteException;
 	
-	public ResultMessage modify(ClientPO po);
-	public ResultMessage modify(WorkerPO po);
-	public ResultMessage modify(NetsalePO po);
-	public ResultMessage modify(NetworkerPO po);
+	public ResultMessage modify(ClientPO po)throws RemoteException;
+	public ResultMessage modify(WorkerPO po)throws RemoteException;
+	public ResultMessage modify(NetsalePO po)throws RemoteException;
+	public ResultMessage modify(NetworkerPO po)throws RemoteException;
 	
-	public boolean clientExist(String id);
-	public boolean workerExist(String id);
-	public boolean netsaleExist(String id);
-	public boolean networkerExist(String id);
+	public boolean clientExist(String id)throws RemoteException;
+	public boolean workerExist(String id)throws RemoteException;
+	public boolean netsaleExist(String id)throws RemoteException;
+	public boolean networkerExist(String id)throws RemoteException;
 	
-	public boolean clientLogin(String id,String password);
-	public boolean workerLogin(String id,String password);
-	public boolean netsaleLogin(String id,String password);
-	public boolean networkerLogin(String id,String password);
+	public boolean clientLogin(String id,String password)throws RemoteException;
+	public boolean workerLogin(String id,String password)throws RemoteException;
+	public boolean netsaleLogin(String id,String password)throws RemoteException;
+	public boolean networkerLogin(String id,String password)throws RemoteException;
 	
 }
