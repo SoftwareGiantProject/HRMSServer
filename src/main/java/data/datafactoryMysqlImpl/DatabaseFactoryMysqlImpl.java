@@ -1,6 +1,8 @@
 package data.datafactoryMysqlImpl;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 import data.creditdata.CreditDataServiceMysqlImpl;
 import data.hoteldata.HotelDataServiceMysqlImpl;
@@ -18,16 +20,8 @@ import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.roomdataservice.RoomDataService;
 import dataservice.userdataservice.UserDataService;
 
-public class DatabaseFactoryMysqlImpl implements DataFactory{
+public class DatabaseFactoryMysqlImpl extends UnicastRemoteObject implements DataFactory,Serializable{
 
-	CreditDataService creditDatabase = new CreditDataServiceMysqlImpl();
-	HotelDataService hotelDatabase =  new HotelDataServiceMysqlImpl();
-	MemberDataService memberDatabase =  new MemberDataServiceMysqlImpl();	
-	OrderDataService orderDatabase =  new OrderDataServiceMysqlImpl();
-	PromotionDataService promotionDatabase =  new PromotionDataServiceMysqlImpl();
-	RoomDataService roomDatabase =  new RoomDataServiceMysqlImpl();
-	UserDataService userDatabase =  new UserDataServiceMysqlImpl();
-	
 	
 	/**
 	 * 单例的唯一实例
@@ -58,31 +52,39 @@ public class DatabaseFactoryMysqlImpl implements DataFactory{
 		return dataFactory;
 	}
 	
-	public UserDataService getUserDatabase() {
+	private CreditDataService creditDatabase = new CreditDataServiceMysqlImpl();
+	private HotelDataService hotelDatabase =  new HotelDataServiceMysqlImpl();
+	private MemberDataService memberDatabase =  new MemberDataServiceMysqlImpl();	
+	private OrderDataService orderDatabase =  new OrderDataServiceMysqlImpl();
+	private PromotionDataService promotionDatabase =  new PromotionDataServiceMysqlImpl();
+	private RoomDataService roomDatabase =  new RoomDataServiceMysqlImpl();
+	private UserDataService userDatabase =  new UserDataServiceMysqlImpl();
+	
+	public UserDataService getUserData() {
 		return userDatabase;
 	}
 
-	public MemberDataService getMemberDatabase() {
+	public MemberDataService getMemberData() {
 		return memberDatabase;
 	}
 
-	public PromotionDataService getPromotionDatabase() {
+	public PromotionDataService getPromotionData() {
 		return promotionDatabase;
 	}
 
-	public CreditDataService getCreditDatabase() {
+	public CreditDataService getCreditData() {
 		return creditDatabase;
 	}
 
-	public OrderDataService getOrderDatabase() {
+	public OrderDataService getOrderData() {
 		return orderDatabase;
 	}
 
-	public HotelDataService getHotelDatabase() {
+	public HotelDataService getHotelData() {
 		return hotelDatabase;
 	}
 
-	public RoomDataService getRoomDatabase() {
+	public RoomDataService getRoomData() {
 		return roomDatabase;
 	}
 

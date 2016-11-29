@@ -1,6 +1,7 @@
 package data.roomdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 import com.mysql.fabric.xmlrpc.base.Array;
 
@@ -11,7 +12,7 @@ import util.ResultMessage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoomDataServiceMysqlImpl implements RoomDataService{
+public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements RoomDataService{
 
 	
 	private SqlManager sqlManager = SqlManager.getSqlManager();
@@ -47,7 +48,7 @@ public class RoomDataServiceMysqlImpl implements RoomDataService{
 
 
 	@Override
-	public RoomPO checkOut(RoomPO room_info) {
+	public RoomPO checkOut(RoomPO room_info) throws RemoteException{
 		if(room_info == null){
 			return null;
 		}
@@ -69,7 +70,7 @@ public class RoomDataServiceMysqlImpl implements RoomDataService{
 
 
 	@Override
-	public RoomPO reserve(RoomPO room_info) {
+	public RoomPO reserve(RoomPO room_info) throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}

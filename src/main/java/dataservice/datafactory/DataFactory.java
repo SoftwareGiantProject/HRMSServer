@@ -20,18 +20,18 @@ public interface DataFactory extends Remote {
 	 * @return
 	 */
 
-	public UserDataService getUserDatabase()throws RemoteException;
+	public UserDataService getUserData()throws RemoteException;
 	
-	public MemberDataService getMemberDatabase()throws RemoteException;
+	public MemberDataService getMemberData()throws RemoteException;
 	
-	public PromotionDataService getPromotionDatabase()throws RemoteException;
+	public PromotionDataService getPromotionData()throws RemoteException;
 	
-	public CreditDataService getCreditDatabase()throws RemoteException;
+	public CreditDataService getCreditData()throws RemoteException;
 	
-	public OrderDataService getOrderDatabase()throws RemoteException;
+	public OrderDataService getOrderData()throws RemoteException;
 	
-	public HotelDataService getHotelDatabase()throws RemoteException;
+	public HotelDataService getHotelData()throws RemoteException;
 	
-	public RoomDataService getRoomDatabase()throws RemoteException;
+	public RoomDataService getRoomData()throws RemoteException;
 	
 }

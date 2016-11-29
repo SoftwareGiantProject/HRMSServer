@@ -1,6 +1,7 @@
 package data.orderdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +14,12 @@ import po.OrderPO;
 import util.ListType;
 import util.ResultMessage;
 
-public class OrderDataServiceMysqlImpl implements OrderDataService{
+public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements OrderDataService{
+
+	public OrderDataServiceMysqlImpl() throws RemoteException {
+		super();
+	}
+
 
 	SqlManager sqlManager = SqlManager.getSqlManager();
 	

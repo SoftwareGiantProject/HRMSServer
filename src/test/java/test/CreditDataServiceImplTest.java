@@ -21,7 +21,7 @@ public class CreditDataServiceImplTest {
 
 	@Before
 	public void init() throws RemoteException{
-		creditDataService = DatabaseFactoryMysqlImpl.getInstance().getCreditDatabase();
+		creditDataService = DatabaseFactoryMysqlImpl.getInstance().getCreditData();
 	}
 	
 	@Test

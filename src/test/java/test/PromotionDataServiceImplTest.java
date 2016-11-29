@@ -19,7 +19,7 @@ public class PromotionDataServiceImplTest {
 	
 	@Before
 	public void init() throws RemoteException{
-		promotionDataService = DatabaseFactoryMysqlImpl.getInstance().getPromotionDatabase();
+		promotionDataService = DatabaseFactoryMysqlImpl.getInstance().getPromotionData();
 	}
 	
 	/**

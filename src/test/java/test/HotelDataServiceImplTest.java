@@ -18,7 +18,7 @@ public class HotelDataServiceImplTest {
 	
 	@Before
 	public void init() throws RemoteException{
-		hotelDataService = DatabaseFactoryMysqlImpl.getInstance().getHotelDatabase();
+		hotelDataService = DatabaseFactoryMysqlImpl.getInstance().getHotelData();
 	}
 	
 	@Test

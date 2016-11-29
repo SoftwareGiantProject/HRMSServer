@@ -1,5 +1,8 @@
 package data.userdata;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 import dataservice.userdataservice.UserDataService;
 import po.ClientPO;
 import po.NetsalePO;
@@ -7,7 +10,12 @@ import po.NetworkerPO;
 import po.WorkerPO;
 import util.ResultMessage;
 
-public class UserDataServiceMysqlImpl implements UserDataService{
+public class UserDataServiceMysqlImpl extends UnicastRemoteObject  implements UserDataService{
+
+	
+	public UserDataServiceMysqlImpl() throws RemoteException {
+		super();
+	}
 
 	@Override
 	public ResultMessage add(ClientPO po) {

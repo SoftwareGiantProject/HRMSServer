@@ -1,6 +1,7 @@
 package data.promotiondata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +13,7 @@ import po.MemberPromotionPO;
 import po.PromotionPO;
 import util.ResultMessage;
 
-public class PromotionDataServiceMysqlImpl implements PromotionDataService{
+public class PromotionDataServiceMysqlImpl extends UnicastRemoteObject  implements PromotionDataService{
 
 	private SqlManager sqlManager = SqlManager.getSqlManager();
 	

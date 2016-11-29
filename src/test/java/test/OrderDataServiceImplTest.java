@@ -21,7 +21,7 @@ public class OrderDataServiceImplTest {
 	
 	@Before
 	public void init(){
-		orderDataService = DatabaseFactoryMysqlImpl.getInstance().getOrderDatabase();
+		orderDataService = DatabaseFactoryMysqlImpl.getInstance().getOrderData();
 	}
 	
 	/**

@@ -1,6 +1,7 @@
 package data.creditdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,7 @@ import dataservice.creditdataservice.CreditDataService;
 import po.CreditPO;
 import util.ResultMessage;
 
-public class CreditDataServiceMysqlImpl implements CreditDataService{
+public class CreditDataServiceMysqlImpl extends UnicastRemoteObject  implements CreditDataService{
 	
 //	public static final long serialVersionUID = 2L;
 	

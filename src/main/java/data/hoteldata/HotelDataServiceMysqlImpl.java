@@ -1,6 +1,7 @@
 package data.hoteldata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +19,7 @@ import util.ResultMessage;
  * @author looh
  *
  */
-public class HotelDataServiceMysqlImpl implements HotelDataService{
+public class HotelDataServiceMysqlImpl extends UnicastRemoteObject  implements HotelDataService{
 	
 	SqlManager sqlManager = SqlManager.getSqlManager();
 	
