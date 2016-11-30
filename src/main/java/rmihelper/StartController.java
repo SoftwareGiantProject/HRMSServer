@@ -66,7 +66,7 @@ public class StartController implements Initializable{
 	
 	@FXML
 	public void handleExport(){
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd-HH-mm-ss");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 		String time = df.format(new Date());
 		String log = this.message.getText();
 		try{

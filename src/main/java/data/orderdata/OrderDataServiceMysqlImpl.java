@@ -119,6 +119,12 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 	}
 
 	@Override
+	public ArrayList<OrderPO> getOrder(String user_id, String hotel_id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public ArrayList<OrderPO> findList(String ListType) throws RemoteException {
 		
 		switch(ListType){
@@ -226,4 +232,5 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		
 		return po;
 	}
+
 }

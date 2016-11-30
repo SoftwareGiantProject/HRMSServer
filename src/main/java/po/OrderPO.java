@@ -5,6 +5,7 @@ import util.ListType;
 public class OrderPO {
 	String user_id;
 	String order_id;
+	String hotel_id;
 	String startTime;
 	String endTime;
 	String deadline;
@@ -17,9 +18,10 @@ public class OrderPO {
 	public OrderPO(){
 		
 	}
-	public OrderPO(String user_id,String order_id,String startTime,String endTime,String deadline,String executeTime,int people,boolean hasChild){
+	public OrderPO(String user_id,String order_id,String hotel_id,String startTime,String endTime,String deadline,String executeTime,int people,boolean hasChild){
 		this.user_id=user_id;
 		this.order_id=order_id;
+		this.hotel_id=hotel_id;
 		this.deadline=deadline;
 		this.endTime=endTime;
 		this.executeTime=executeTime;
@@ -38,6 +40,12 @@ public class OrderPO {
 	//各种get和set
 	public String getUser_id() {
 		return user_id;
+	}
+	public String getHotel_id() {
+		return hotel_id;
+	}
+	public void setHotel_id(String hotel_id) {
+		this.hotel_id = hotel_id;
 	}
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;

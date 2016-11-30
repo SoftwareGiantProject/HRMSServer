@@ -9,7 +9,11 @@ import dataservice.memberdataservice.MemberDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.roomdataservice.RoomDataService;
+import dataservice.userdataservice.ClientDataService;
+import dataservice.userdataservice.NetsaleDataService;
+import dataservice.userdataservice.NetworkerDataService;
 import dataservice.userdataservice.UserDataService;
+import dataservice.userdataservice.WorkerDataService;
 
 public interface DataFactory extends Remote {
 	
@@ -33,5 +37,13 @@ public interface DataFactory extends Remote {
 	public HotelDataService getHotelData()throws RemoteException;
 	
 	public RoomDataService getRoomData()throws RemoteException;
+	
+	public ClientDataService getClientData()throws RemoteException;
+	
+	public WorkerDataService getWorkerData()throws RemoteException;
+	
+	public NetsaleDataService getNetsaleData()throws RemoteException;
+	
+	public NetworkerDataService getNetworkerData()throws RemoteException;
 	
 }

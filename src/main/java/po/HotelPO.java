@@ -14,6 +14,12 @@ public class HotelPO {
 	//酒店所属商圈
 	String hotel_area;
 	
+	//星级
+	int hotel_level;
+	
+	//评分
+	double hotel_score;
+	
 	//酒店简介
 	String hotel_intro;
 	
@@ -25,7 +31,7 @@ public class HotelPO {
 	
 	
 	public HotelPO(String hotel_id,String hotel_name,String hotel_address,String hotel_area,String hotel_intro,
-			String hotel_serve,String hotel_room){
+			String hotel_serve,String hotel_room,int hotel_level,double hotel_score){
 		this.hotel_id = hotel_id;
 		this.hotel_address = hotel_address;
 		this.hotel_area = hotel_area;
@@ -33,10 +39,29 @@ public class HotelPO {
 		this.hotel_name = hotel_name;
 		this.hotel_room = hotel_room;
 		this.hotel_serve = hotel_serve;
+		this.hotel_level = hotel_level;
+		this.hotel_score = hotel_score;
 	}
 	
 	public HotelPO(){
 		
+	}
+	
+	
+	public int getHotelLevel(){
+		return hotel_level;
+	}
+	
+	public void setHotelLevel(int level){
+		this.hotel_level = level;
+	}
+	
+	public double getHotelScore(){
+		return hotel_score;
+	}
+	
+	public void setHotelScore(double score){
+		this.hotel_score = score;
 	}
 	
 	public String getHotelId(){

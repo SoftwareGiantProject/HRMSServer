@@ -130,6 +130,36 @@ public class HotelDataServiceMysqlImpl extends UnicastRemoteObject  implements H
 		
 		return po;
 	}
+
+	@Override
+	public ArrayList<HotelPO> getReservedHotel(String user_id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<HotelPO> getHotelByArea(String area) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<HotelPO> getHotelByLevel(int level) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<HotelEvaluationPO> getAllHotelEvaluation(String hotel_name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<HotelPO> getAllHotel(String user_id, String hotel_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

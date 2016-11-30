@@ -35,7 +35,6 @@ public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements Ro
 		params.add(room.getRoom_type());
 		params.add(room.getRoom_number());
 		params.add(room.getRoom_price());
-		params.add(room.getRoom_num());
 		params.add(room.getRoom_condition());
 		
 		String sql = sqlManager.appendSQL("INSERT INTO room VALUES", params.size());
@@ -71,6 +70,13 @@ public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements Ro
 
 	@Override
 	public RoomPO reserve(RoomPO room_info) throws RemoteException{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ArrayList<RoomPO> findRoom(String hotel_id, String room_type) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

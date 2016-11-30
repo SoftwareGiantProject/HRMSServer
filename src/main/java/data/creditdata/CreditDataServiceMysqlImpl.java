@@ -3,11 +3,15 @@ package data.creditdata;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import data.sqlmanager.SqlManager;
+import data.userdata.ClientDataServiceMysqlImpl;
 import dataservice.creditdataservice.CreditDataService;
+import dataservice.userdataservice.ClientDataService;
+import po.ClientPO;
 import po.CreditPO;
 import util.ResultMessage;
 
@@ -23,8 +27,8 @@ public class CreditDataServiceMysqlImpl extends UnicastRemoteObject  implements 
 	
 	@Override
 	public int getCredit(String user_id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
+		CreditPO po = find(user_id);
+		return po.getCredit();
 	}
 	
 	@Override

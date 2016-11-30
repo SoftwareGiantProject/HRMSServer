@@ -10,7 +10,11 @@ import data.memberdata.MemberDataServiceMysqlImpl;
 import data.orderdata.OrderDataServiceMysqlImpl;
 import data.promotiondata.PromotionDataServiceMysqlImpl;
 import data.roomdata.RoomDataServiceMysqlImpl;
+import data.userdata.ClientDataServiceMysqlImpl;
+import data.userdata.NetsaleDataServiceMySqlImpl;
+import data.userdata.NetworkerDataServiceMySqlImpl;
 import data.userdata.UserDataServiceMysqlImpl;
+import data.userdata.WorkerDataServiceMysqlImpl;
 import dataservice.creditdataservice.CreditDataService;
 import dataservice.datafactory.*;
 import dataservice.hoteldataservice.HotelDataService;
@@ -18,7 +22,13 @@ import dataservice.memberdataservice.MemberDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.roomdataservice.RoomDataService;
+import dataservice.userdataservice.ClientDataService;
+import dataservice.userdataservice.NetsaleDataService;
+import dataservice.userdataservice.NetworkerDataService;
 import dataservice.userdataservice.UserDataService;
+import dataservice.userdataservice.WorkerDataService;
+import po.ClientPO;
+import util.ResultMessage;
 
 public class DatabaseFactoryMysqlImpl extends UnicastRemoteObject implements DataFactory,Serializable{
 
@@ -59,6 +69,11 @@ public class DatabaseFactoryMysqlImpl extends UnicastRemoteObject implements Dat
 	private PromotionDataService promotionDatabase =  new PromotionDataServiceMysqlImpl();
 	private RoomDataService roomDatabase =  new RoomDataServiceMysqlImpl();
 	private UserDataService userDatabase =  new UserDataServiceMysqlImpl();
+	private ClientDataService clientDatabase = new ClientDataServiceMysqlImpl();
+	private WorkerDataService workerDatabase = new WorkerDataServiceMysqlImpl();
+	private NetsaleDataService netsaleDatabase = new NetsaleDataServiceMySqlImpl();
+	private NetworkerDataService networkerDatabase = new NetworkerDataServiceMySqlImpl();
+		
 	
 	public UserDataService getUserData() {
 		return userDatabase;
@@ -86,6 +101,26 @@ public class DatabaseFactoryMysqlImpl extends UnicastRemoteObject implements Dat
 
 	public RoomDataService getRoomData() {
 		return roomDatabase;
+	}
+
+	@Override
+	public ClientDataService getClientData() throws RemoteException {
+		return clientDatabase;
+	}
+
+	@Override
+	public WorkerDataService getWorkerData() throws RemoteException {
+		return workerDatabase;
+	}
+
+	@Override
+	public NetsaleDataService getNetsaleData() throws RemoteException {
+		return netsaleDatabase;
+	}
+
+	@Override
+	public NetworkerDataService getNetworkerData() throws RemoteException {
+		return networkerDatabase;
 	}
 
 }
