@@ -24,6 +24,11 @@ public class CommonMemberPO {
 		Member_type = mt;
 	}
 	
+	
+	public CommonMemberPO(){
+		
+	}
+	
 	public void setCommonMember_level(int coml){
 		this.CommonMember_level = coml;
 	}

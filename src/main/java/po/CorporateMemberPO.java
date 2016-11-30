@@ -28,6 +28,10 @@ public class CorporateMemberPO {
 		Member_type = mt;
 	}
 	
+	public CorporateMemberPO(){
+		
+	}
+	
 	public void setCorporateMember_level(int corl){
 		this.CorporateMember_level = corl;
 	}

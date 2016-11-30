@@ -118,18 +118,6 @@ public class HotelDataServiceMysqlImpl extends UnicastRemoteObject  implements H
 		return null;
 	}
 
-	private HotelPO getHotelPO(Map<String,Object> map){
-		HotelPO po = new HotelPO();
-		po.setHotelId(map.get("id").toString());
-		po.setHotelName(map.get("name").toString());
-		po.setHotelAddress(map.get("address").toString());
-		po.setHotelArea(map.get("area").toString());
-		po.setHotelIntro(map.get("intro").toString());
-		po.setHotelServe(map.get("serve").toString());
-		po.setHotelRoom(map.get("room").toString());
-		
-		return po;
-	}
 
 	@Override
 	public ArrayList<HotelPO> getReservedHotel(String user_id) throws RemoteException {
@@ -150,16 +138,28 @@ public class HotelDataServiceMysqlImpl extends UnicastRemoteObject  implements H
 	}
 
 	@Override
-	public ArrayList<HotelEvaluationPO> getAllHotelEvaluation(String hotel_name) {
+	public ArrayList<HotelEvaluationPO> getAllHotelEvaluation(String hotel_name) throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ArrayList<HotelPO> getAllHotel(String user_id, String hotel_id) {
+	public ArrayList<HotelPO> getAllHotel(String user_id, String hotel_id) throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
+	private HotelPO getHotelPO(Map<String,Object> map){
+		HotelPO po = new HotelPO();
+		po.setHotelId(map.get("id").toString());
+		po.setHotelName(map.get("name").toString());
+		po.setHotelAddress(map.get("address").toString());
+		po.setHotelArea(map.get("area").toString());
+		po.setHotelIntro(map.get("intro").toString());
+		po.setHotelServe(map.get("serve").toString());
+		po.setHotelRoom(map.get("room").toString());
+		
+		return po;
+	}
 	
 }
