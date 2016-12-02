@@ -26,21 +26,17 @@ public class CreditDataServiceImplTest {
 	
 	@Test
 	public void testFind(){
-		String user_id = "151250060";
+		String user_id = "151250061";
 		CreditPO po = null;
 		try {
 			 po = creditDataService.find(user_id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		CreditPO poRes = new CreditPO();
-		poRes.setId("151250060");
-		poRes.setCredit(500);
-		poRes.setChange(150);
-		poRes.setTime("2016-11-22");
-		assertEquals(poRes.getId()+poRes.getCredit()+poRes.getTime()+poRes.getChange(),po.getId()+po.getCredit()+po.getTime()+po.getChange());
+		assertEquals(po.getCredit(),1600);
 	}
 	
+	/**
 	@Test
 	public void testGetHistoryCredit(){
 		String user_id = "151250061";
@@ -72,6 +68,8 @@ public class CreditDataServiceImplTest {
 		assertEquals(list.get(1).getUserId()+list.get(1).getCredit()+list.get(1).getTime()+list.get(1).getChange(),
 				     listRes.get(1).getId()+listRes.get(1).getCredit()+listRes.get(1).getTime()+listRes.get(1).getChange());
 	}
+	*/
+	
 	/**
 	 * 该插入方法已测试成功
 	@Test

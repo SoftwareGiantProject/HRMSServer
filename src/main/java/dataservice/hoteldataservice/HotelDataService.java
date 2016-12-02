@@ -15,7 +15,6 @@ public interface HotelDataService extends Remote{
 
 
 	public HotelPO seekHotel(String hotel_name) throws RemoteException;
-	public ArrayList<HotelPO> viewHistoryHotel() throws RemoteException;
 	
 	public ArrayList<HotelPO> getReservedHotel(String user_id) throws RemoteException;
 	public ArrayList<HotelPO> getHotelByArea(String area) throws RemoteException;

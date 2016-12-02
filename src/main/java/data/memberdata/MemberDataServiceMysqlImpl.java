@@ -33,7 +33,7 @@ public class MemberDataServiceMysqlImpl extends UnicastRemoteObject  implements 
 		
 		for(Map<String,Object> map : mapList){
 			list.add(getCommomMemberPO(map));
-		}
+		}	
 		
 		sqlManager.releaseAll();
 		return list;

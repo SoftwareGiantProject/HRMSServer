@@ -112,8 +112,8 @@ public class OrderDataServiceImplTest {
 			e.printStackTrace();
 		}
 		
-		assertEquals(list1.get(1).getOrder_id(), "201611250001");
-		assertEquals(list2.get(1).getListType(),ListType.UNDOLIST );
+		assertEquals(list1.get(1).getOrder_id(), "201611270001");
+		assertEquals(list2.get(2).getListType(),ListType.UNDOLIST );
 	}
 	
 	

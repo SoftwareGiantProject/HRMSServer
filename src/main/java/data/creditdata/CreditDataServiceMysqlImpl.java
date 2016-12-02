@@ -39,7 +39,8 @@ public class CreditDataServiceMysqlImpl extends UnicastRemoteObject  implements 
 		ArrayList<CreditPO> list;
 	    list = getHistoryCredit(user_id);
 	    
-	    po = list.get(0);
+	    po = list.get(list.size());
+	    sqlManager.releaseAll();
 		return po;
 	}
 
@@ -69,7 +70,7 @@ public class CreditDataServiceMysqlImpl extends UnicastRemoteObject  implements 
 		sqlManager.getConnection();
 		
 		ArrayList<CreditPO> list = new ArrayList<CreditPO>();
-		String sql = "SELECT * FROM credit WHERE client_id=? ORDER BY time DESC";
+		String sql = "SELECT * FROM credit WHERE client_id=? ORDER BY time ASC";
 		List<Map<String, Object>> mapList = sqlManager.queryMulti(sql, new Object[]{user_id});
 		for(Map<String, Object> map : mapList){
 			list.add(getCreditPO(map));
