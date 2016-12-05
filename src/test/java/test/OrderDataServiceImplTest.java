@@ -101,13 +101,13 @@ public class OrderDataServiceImplTest {
 		ArrayList<OrderPO> list1 = new ArrayList<OrderPO>();
 		ArrayList<OrderPO> list2 = new ArrayList<OrderPO>();
 		try {
-			list1 = orderDataService.findList(listType1);
+			list1 = orderDataService.findList("1251250061",listType1);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			list2= orderDataService.findList(listType2);
+			list2= orderDataService.findList("151250060",listType2);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

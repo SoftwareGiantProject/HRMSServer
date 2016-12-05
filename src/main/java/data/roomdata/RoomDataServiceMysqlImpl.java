@@ -7,6 +7,7 @@ import com.mysql.fabric.xmlrpc.base.Array;
 
 import data.sqlmanager.SqlManager;
 import dataservice.roomdataservice.RoomDataService;
+import po.RoomConditionDatePO;
 import po.RoomPO;
 import util.ResultMessage;
 import java.util.ArrayList;
@@ -47,36 +48,42 @@ public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements Ro
 
 
 	@Override
-	public RoomPO checkOut(RoomPO room_info) throws RemoteException{
-		if(room_info == null){
-			return null;
-		}
-		
-		sqlManager.getConnection();
-		
-		List<Object> params= new ArrayList<Object>();
-		
-		params.add("unreserved");
-		params.add(room_info.getHotel_id());
-		params.add(room_info.getRoom_number());
-		
-		String sql = "UPDATE room SET condition=? WHERE hotel_id=?, room_id=?";
-		
-		sqlManager.executeUpdateByList(sql, params);
-		sqlManager.releaseAll();
-		return null;
-	}
-
-
-	@Override
-	public RoomPO reserve(RoomPO room_info) throws RemoteException{
+	public ArrayList<RoomPO> findRoom(String hotel_id, String room_type) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
 	@Override
-	public ArrayList<RoomPO> findRoom(String hotel_id, String room_type) throws RemoteException {
+	public ArrayList<RoomPO> getAllRoom(String hotel_id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ResultMessage addRoomCondition(RoomConditionDatePO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ResultMessage modifyRoomCondition(RoomConditionDatePO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ResultMessage deleteRoomCondition(RoomConditionDatePO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ArrayList<RoomConditionDatePO> getAllByDate(String date) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

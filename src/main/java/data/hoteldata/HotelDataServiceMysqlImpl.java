@@ -267,5 +267,11 @@ public class HotelDataServiceMysqlImpl extends UnicastRemoteObject  implements H
 		
 		return po;
 	}
+
+	@Override
+	public ArrayList<HotelPO> getAllHotels() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

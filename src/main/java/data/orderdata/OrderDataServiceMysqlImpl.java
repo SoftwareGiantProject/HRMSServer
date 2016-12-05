@@ -119,21 +119,15 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 	}
 
 	@Override
-	public ArrayList<OrderPO> getOrder(String user_id, String hotel_id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public ArrayList<OrderPO> findList(String ListType) throws RemoteException {
+	public ArrayList<OrderPO> findList(String user_id,String ListType) throws RemoteException {
 		
 		switch(ListType){
 		case"ALLLIST":{
 			sqlManager.getConnection();
 			
 			ArrayList<OrderPO> list = new ArrayList<OrderPO>();
-			String sql = "SELECT * FROM orders ORDER BY order_id DESC";
-			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+			String sql = "SELECT * FROM orders WHERE user_id=? ORDER BY order_id DESC ";
+			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{user_id});
 			for(Map<String , Object> map : mapList){
 				list.add(getOrderPO(map));
 			}
@@ -145,8 +139,8 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 			sqlManager.getConnection();
 			
 			ArrayList<OrderPO> list = new ArrayList<OrderPO>();
-			String sql = "SELECT * FROM orders WHERE listType='HISTORYLIST' ORDER BY order_id DESC";
-			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+			String sql = "SELECT * FROM orders WHERE listType='HISTORYLIST' AND user_id=? ORDER BY order_id DESC";
+			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{user_id});
 			for(Map<String , Object> map : mapList){
 				list.add(getOrderPO(map));
 			}
@@ -158,8 +152,8 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 			sqlManager.getConnection();
 			
 			ArrayList<OrderPO> list = new ArrayList<OrderPO>();
-			String sql = "SELECT * FROM orders WHERE listType='CURRENTLIST' ORDER BY order_id DESC";
-			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+			String sql = "SELECT * FROM orders WHERE listType='CURRENTLIST' AND user_id=? ORDER BY order_id DESC";
+			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{user_id});
 			for(Map<String , Object> map : mapList){
 				list.add(getOrderPO(map));
 			}
@@ -171,8 +165,8 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 			sqlManager.getConnection();
 			
 			ArrayList<OrderPO> list = new ArrayList<OrderPO>();
-			String sql = "SELECT * FROM orders WHERE listType='UNDOLIST' ORDER BY order_id DESC";
-			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+			String sql = "SELECT * FROM orders WHERE listType='UNDOLIST' AND user_id=? ORDER BY order_id DESC";
+			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{user_id});
 			for(Map<String , Object> map : mapList){
 				list.add(getOrderPO(map));
 			}
@@ -184,8 +178,8 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 			sqlManager.getConnection();
 			
 			ArrayList<OrderPO> list = new ArrayList<OrderPO>();
-			String sql = "SELECT * FROM orders WHERE listType='ABNORMALLIST' ORDER BY order_id DESC";
-			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+			String sql = "SELECT * FROM orders WHERE listType='ABNORMALLIST' AND user_id=? ORDER BY order_id DESC";
+			List<Map<String , Object>> mapList = sqlManager.queryMulti(sql, new Object[]{user_id});
 			for(Map<String , Object> map : mapList){
 				list.add(getOrderPO(map));
 			}
@@ -231,6 +225,12 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		}
 		
 		return po;
+	}
+
+	@Override
+	public ArrayList<OrderPO> getOrderByHotel(String hotel_id) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

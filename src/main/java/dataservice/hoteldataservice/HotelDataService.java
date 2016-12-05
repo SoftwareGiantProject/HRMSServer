@@ -15,12 +15,13 @@ public interface HotelDataService extends Remote{
 
 
 	public HotelPO seekHotel(String hotel_name) throws RemoteException;
+	public ArrayList<HotelPO> getAllHotels()throws RemoteException;
 	
 	public ArrayList<HotelPO> getReservedHotel(String user_id) throws RemoteException;
 	public ArrayList<HotelPO> getHotelByArea(String area) throws RemoteException;
 	public ArrayList<HotelPO> getHotelByLevel(int level) throws RemoteException;
  	public ArrayList<HotelEvaluationPO> getAllHotelEvaluation(String hotel_name)throws RemoteException;
- 	public ArrayList<HotelPO> getAllHotel(String user_id, String hotel_id) throws RemoteException;
+ 	public ArrayList<HotelPO> getAllHotel(String user_id, String hotel_id)throws RemoteException;
 	
 	public ResultMessage addHotel(HotelPO po) throws RemoteException;
 	public ResultMessage modifyHotel(HotelPO po) throws RemoteException;
