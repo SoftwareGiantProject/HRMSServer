@@ -90,9 +90,30 @@ public class OrderDataServiceImplTest {
 	
 	@Test
 	public void testModifyOrder(){
+		OrderPO po = new OrderPO();
 		
+		po.setOrder_id("201611270002");
+		po.setUser_id("151250060");
+		po.setHotel_id("h002");
+		po.setStartTime("2016-11-27-08-12-32");
+		po.setEndTime("2016-11-28-20-53-54");
+		po.setDeadline(" ");
+		po.setExecuteTime(" ");
+		po.setPredictCheckInTime("2016-11-27-20-00-00");
+		po.setPredictCheckOutTime("2016-11-28-12-00-00");
+		po.setPeople(1);
+		po.setHasChild(false);
+		po.setListType(ListType.UNDOLIST);
+		
+		try {
+			orderDataService.modifyOrder(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 	
+	/**
+	 * FindList已测试成功
 	@Test
 	public void testFindList(){
 		String listType1 = "HISTORYLIST";
@@ -115,6 +136,6 @@ public class OrderDataServiceImplTest {
 		assertEquals(list1.get(1).getOrder_id(), "201611270001");
 		assertEquals(list2.get(2).getListType(),ListType.UNDOLIST );
 	}
-	
+	*/
 	
 }

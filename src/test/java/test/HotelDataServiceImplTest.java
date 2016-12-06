@@ -25,6 +25,20 @@ public class HotelDataServiceImplTest {
 	}
 	
 	@Test
+	public void testGetAllHotels(){
+		ArrayList<HotelPO> list = new ArrayList<>();
+	
+		try {
+			list = hotelDataService.getAllHotels();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals("h001", list.get(0).getHotelId());
+		assertEquals(3, list.get(1).getHotelLevel());
+	}
+	
+	@Test
 	public void testSeekHotel(){
 		String hotel_name = "英尊假日酒店";
 		

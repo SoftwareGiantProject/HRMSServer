@@ -1,6 +1,6 @@
 package po;
 
-import util.RoomConditon;
+import util.RoomCondition;
 
 public class RoomPO {
 
@@ -8,19 +8,19 @@ public class RoomPO {
 	String Room_type;
 		
 	//房间价格
-	double Room_price;
+	int Room_price;
 	
 	//房间编号
 	String Room_number;
 		
 	//房间状态
-	RoomConditon Room_condition;
+	RoomCondition Room_condition;
 	
 	//酒店编号
 	String Hotel_id;
 	
 	
-	public RoomPO(String rt,double rp, String rnb, RoomConditon rc, String ho){
+	public RoomPO(String rt,int rp, String rnb, RoomCondition rc, String ho){
 		
 		Room_type = rt;
 		Room_price = rp;
@@ -38,7 +38,7 @@ public class RoomPO {
 		this.Room_type = rt;
 	}
 	
-	public void setRoom_price(double rp){
+	public void setRoom_price(int rp){
 		this.Room_price = rp;
 	}
 	
@@ -46,7 +46,7 @@ public class RoomPO {
 		this.Room_number = rnb;
 	}
 	
-	public void setRoom_condition(RoomConditon rc){
+	public void setRoom_condition(RoomCondition rc){
 		this.Room_condition = rc;
 	}
 	
@@ -58,7 +58,7 @@ public class RoomPO {
 		return Room_type;
 	}
 
-	public double getRoom_price(){
+	public int getRoom_price(){
 		return Room_price;
 	}
 	
@@ -66,7 +66,7 @@ public class RoomPO {
 		return Room_number;
 	}
 	
-	public RoomConditon getRoom_condition(){
+	public RoomCondition getRoom_condition(){
 		return Room_condition;
 	}
 	

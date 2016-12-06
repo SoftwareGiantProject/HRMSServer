@@ -46,10 +46,15 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		
 		params.add(order.getOrder_id());
 		params.add(order.getUser_id());
+		params.add(order.getHotel_id());
 		params.add(order.getStartTime());
 		params.add(order.getEndTime());
 		params.add(order.getDeadline());
 		params.add(order.getExecuteTime());
+		params.add(order.getPredictCheckInTime());
+		params.add(order.getPredictCheckOutTime());
+		params.add(order.getRoomType());
+		params.add(order.getNumber());
 		params.add(order.getPeople());
 		params.add(order.isHasChild());
 		params.add(order.getListType().toString());
@@ -76,16 +81,21 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		List<Object> params = new ArrayList<Object>();
 		
 		params.add(order.getUser_id());
+		params.add(order.getHotel_id());
 		params.add(order.getStartTime());
 		params.add(order.getEndTime());
 		params.add(order.getDeadline());
 		params.add(order.getExecuteTime());
+		params.add(order.getPredictCheckInTime());
+		params.add(order.getPredictCheckOutTime());
+		params.add(order.getRoomType());
+		params.add(order.getNumber());
 		params.add(order.getPeople());
 		params.add(order.isHasChild());
 		params.add("UNDOLIST");
 		params.add(order.getOrder_id());
 		
-		String sql = "UPDATE orders SET user_id=?,startTime=?,endTime=?,deadline=?,executeTime=?,people=?,child=?,listType=? WHERE order_id=?";
+		String sql = "UPDATE orders SET user_id=?,hotel_id=?,startTime=?,endTime=?,deadline=?,executeTime=?,predictCheckinTime=?,predictCheckoutTime=?,roomtype=?,number=?,people=?,child=?,listType=? WHERE order_id=?";
 		
 		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseAll();
@@ -102,22 +112,44 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		List<Object> params = new ArrayList<Object>();
 		
 		params.add(order.getUser_id());
+		params.add(order.getHotel_id());
 		params.add(order.getStartTime());
 		params.add(order.getEndTime());
 		params.add(order.getDeadline());
 		params.add(order.getExecuteTime());
+		params.add(order.getPredictCheckInTime());
+		params.add(order.getPredictCheckOutTime());
+		params.add(order.getRoomType());
+		params.add(order.getNumber());
 		params.add(order.getPeople());
 		params.add(order.isHasChild());
 		params.add(order.getListType().toString());
 		params.add(order.getOrder_id());
 		
-		String sql = "UPDATE order SET user_id=?,startTime=?,endTime=?,deadline=?,executeTime=?,people=?,child=?,listType=? WHERE order_id=?";
+		String sql = "UPDATE orders SET user_id=?,hotel_id=?,startTime=?,endTime=?,deadline=?,executeTime=?,predictCheckinTime=?,predictCheckoutTime=?,roomtype=?,number=?,people=?,child=?,listType=? WHERE order_id=?";
 		
 		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseAll();
 		return ResultMessage.SUCCESS;
 	}
 
+	@Override
+	public ArrayList<OrderPO> getOrderByHotel(String hotel_id) throws RemoteException {
+		sqlManager.getConnection();
+		
+		ArrayList<OrderPO> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM orders WHERE hotel_id=?";
+		List<Map<String,Object>> mapList = sqlManager.queryMulti(sql, new Object[]{hotel_id});
+		
+		for(Map<String, Object> map : mapList){
+			list.add(getOrderPO(map));
+		}
+		sqlManager.releaseAll();
+		
+		return list;
+	}
+	
 	@Override
 	public ArrayList<OrderPO> findList(String user_id,String ListType) throws RemoteException {
 		
@@ -198,10 +230,15 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		
 		po.setOrder_id(map.get("order_id").toString());
 		po.setUser_id(map.get("user_id").toString());
+		po.setHotel_id(map.get("hotel_id").toString());
 		po.setStartTime(map.get("startTime").toString());
 		po.setEndTime(map.get("endTime").toString());
 		po.setDeadline(map.get("deadline").toString());
 		po.setExecuteTime(map.get("executeTime").toString());
+		po.setPredictCheckInTime(map.get("predictCheckinTime").toString());
+		po.setPredictCheckOutTime(map.get("predictCheckoutTime").toString());
+		po.setRoomType(map.get("roomtype").toString());
+		po.setNumber(Integer.parseInt(map.get("number").toString()));
 		po.setPeople(Integer.parseInt(map.get("people").toString()));
 		po.setHasChild(Boolean.getBoolean(map.get("child").toString()));
 		
@@ -225,12 +262,6 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		}
 		
 		return po;
-	}
-
-	@Override
-	public ArrayList<OrderPO> getOrderByHotel(String hotel_id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

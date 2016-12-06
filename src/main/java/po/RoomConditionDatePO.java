@@ -2,7 +2,7 @@ package po;
 
 import java.util.Date;
 
-import util.RoomConditon;
+import util.RoomCondition;
 
 public class RoomConditionDatePO {
 	//酒店id
@@ -15,13 +15,13 @@ public class RoomConditionDatePO {
 	String RoomNumber;
 		
 	//房间状态״̬
-	RoomConditon roomcondition;
+	RoomCondition roomcondition;
 		
 	public RoomConditionDatePO(){
 			
 	}
 		
-	public RoomConditionDatePO(String hotel_id,String rd, String rn, RoomConditon rc){
+	public RoomConditionDatePO(String hotel_id,String rd, String rn, RoomCondition rc){
 		
 	    this.hotel_id = hotel_id;	
 	    this.RoomDate = rd;
@@ -47,7 +47,7 @@ public class RoomConditionDatePO {
 		RoomNumber = rn;
 	}
 	
-	public void setRoomConditon(RoomConditon rc){
+	public void setRoomCondition(RoomCondition rc){
 		roomcondition = rc;
 	}
 	    
@@ -59,7 +59,7 @@ public class RoomConditionDatePO {
 	   return RoomNumber;
 	}
 	    
-	public RoomConditon getRoomCondition(){
+	public RoomCondition getRoomCondition(){
 	   return roomcondition;
 	}
 
