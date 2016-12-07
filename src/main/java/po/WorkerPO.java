@@ -64,7 +64,7 @@ public class WorkerPO implements Serializable{
 		}
 		
 		public void setContact(String contact){
-			this.userName=contact;
+			this.contact=contact;
 		}
 		
 		

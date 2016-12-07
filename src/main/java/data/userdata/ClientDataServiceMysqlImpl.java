@@ -1,11 +1,20 @@
 package data.userdata;
 
+import java.util.List;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
+import data.datafactoryMysqlImpl.DatabaseFactoryMysqlImpl;
+import data.memberdata.MemberDataServiceMysqlImpl;
 import data.sqlmanager.SqlManager;
+import dataservice.datafactory.DataFactory;
+import dataservice.memberdataservice.MemberDataService;
 import dataservice.userdataservice.ClientDataService;
 import po.ClientPO;
+import po.CommonMemberPO;
+import po.CorporateMemberPO;
 import util.MemberType;
 import util.ResultMessage;
 
@@ -19,34 +28,118 @@ public class ClientDataServiceMysqlImpl implements ClientDataService{
 	
 	@Override
 	public ResultMessage add(ClientPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		if(po == null){
+			return ResultMessage.FAIL;
+		}
+		
+		sqlManager.getConnection();
+		List<Object> params = new ArrayList<Object>();
+		
+		params.add(po.getUserId());
+		params.add(po.getMemberId());
+		params.add(po.getUserName());
+		params.add(po.getPassword());
+		params.add(po.getCredit());
+		params.add(po.getContact());
+		params.add(po.getBirthday());
+		switch(po.getType()){
+		case COMMONMEMBER :
+			params.add("COM");
+			break;
+		case CORPORATEMEMBER :
+			params.add("COR");
+			break;
+		case NONE :
+			params.add("NONE");
+			break;
+		}
+		
+		String sql = sqlManager.appendSQL("INSERT INTO client VALUES", params.size());
+		
+		sqlManager.executeUpdateByList(sql, params);
+		sqlManager.releaseAll();
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ClientPO findClient(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		sqlManager.getConnection();
+		
+		Map<String, Object> map = new HashMap<>();
+		String sql = "SELECT * FROM client WHERE id=?";
+		map = sqlManager.querySimple(sql, new Object[]{id});
+		
+		ClientPO po = getClientPO(map);
+		return po;
 	}
 
 	@Override
 	public ResultMessage modify(ClientPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		if(po == null){
+			return ResultMessage.FAIL;
+		}
+		
+		sqlManager.getConnection();
+		List<Object> params = new ArrayList<>();
+		
+		params.add(po.getMemberId());
+		params.add(po.getUserName());
+		params.add(po.getPassword());
+		params.add(po.getCredit());
+		params.add(po.getContact());
+		params.add(po.getBirthday());
+		switch(po.getType()){
+		case COMMONMEMBER :
+			params.add("COM");
+			break;
+		case CORPORATEMEMBER :
+			params.add("COR");
+			break;
+		case NONE :
+			params.add("NONE");
+			break;
+		}
+		params.add(po.getUserId());
+		
+		String sql = "UPDATE client SET member_id=?, name=?, password=?, credit=?, contact=?, birthday=?, membertype=? WHERE id=?";
+		
+		sqlManager.executeUpdateByList(sql, params);
+		sqlManager.releaseAll();
+		
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
-	public boolean clientExist(String id) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+	public ArrayList<ClientPO> getAllClient() throws RemoteException {
+		sqlManager.getConnection();
+		
+		ArrayList<ClientPO> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM client";
+		List<Map<String,Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+		
+		for(Map<String,Object> map : mapList){
+			list.add(getClientPO(map));
+		}
+		
+		sqlManager.releaseAll();
+ 		return list;
 	}
 
 	@Override
-	public boolean clientLogin(String id, String password) throws RemoteException {
-		// TODO Auto-generated method stub
-		return false;
+	public ResultMessage registComMember(CommonMemberPO po) throws RemoteException {
+		MemberDataService memberDataService = DatabaseFactoryMysqlImpl.getInstance().getMemberData();;
+		
+		return memberDataService.addComMember(po);
 	}
 
+	@Override
+	public ResultMessage registCorMember(CorporateMemberPO po) throws RemoteException {
+		MemberDataService memberDataService = DatabaseFactoryMysqlImpl.getInstance().getMemberData();
+		
+		return memberDataService.addCorMember(po);
+	}
+	
 	private ClientPO getClientPO(Map<String, Object> map){
 		
 		ClientPO po = new ClientPO();
@@ -75,4 +168,5 @@ public class ClientDataServiceMysqlImpl implements ClientDataService{
 		
 		return po;
 	}
+
 }

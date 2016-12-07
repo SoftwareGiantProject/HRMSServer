@@ -12,6 +12,4 @@ public interface NetsaleDataService extends Remote{
 	public NetsalePO findNetsale(String id)throws RemoteException;
 	public ResultMessage modify(NetsalePO po)throws RemoteException;
 	
-	public boolean netsaleExist(String id)throws RemoteException;
-	public boolean netsaleLogin(String id,String password)throws RemoteException;
 }

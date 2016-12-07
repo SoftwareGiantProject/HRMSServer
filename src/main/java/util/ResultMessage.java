@@ -19,7 +19,10 @@ public enum ResultMessage {
 	WRONG_ID,//错误ID
 	WRONG_PASSWORD,//错误密码
 	
-	
+	CLIENT,//客户
+	WORKER,//酒店工作人员
+	NETWORKER,//网站管理人员
+	NETSALE,//网站营销人员
 	
 }
 	
