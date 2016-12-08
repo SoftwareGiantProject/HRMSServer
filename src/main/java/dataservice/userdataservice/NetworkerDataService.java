@@ -10,4 +10,6 @@ public interface NetworkerDataService extends Remote{
 
 	public NetworkerPO findNetworker(String id)throws RemoteException;
 	public ResultMessage modify(NetworkerPO po)throws RemoteException;
+	public ResultMessage add(NetworkerPO po)throws RemoteException;
+	
 }

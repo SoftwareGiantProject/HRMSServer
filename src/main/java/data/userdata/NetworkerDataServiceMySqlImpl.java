@@ -55,6 +55,27 @@ public class NetworkerDataServiceMySqlImpl implements NetworkerDataService{
 		sqlManager.releaseAll();
 		return ResultMessage.SUCCESS;
 	}
+	
+	@Override
+	public ResultMessage add(NetworkerPO po) throws RemoteException {
+		if(po == null){
+			return ResultMessage.FAIL;
+		}
+		sqlManager.getConnection();
+		
+		List<Object> params = new ArrayList<>();
+		
+		params.add(po.getUserId());
+		params.add(po.getUserName());
+		params.add(po.getPassword());
+		params.add(po.getContact());
+		
+		String sql = sqlManager.appendSQL("INSERT INTO networker VALUES", params.size());
+		
+		sqlManager.executeUpdateByList(sql, params);
+		sqlManager.releaseAll();
+		return ResultMessage.SUCCESS;
+	}
 
 	private NetworkerPO getNetworkerPO(Map<String, Object> map){
 		NetworkerPO po = new NetworkerPO();
@@ -66,4 +87,5 @@ public class NetworkerDataServiceMySqlImpl implements NetworkerDataService{
 		
 		return po;
 	}
+
 }

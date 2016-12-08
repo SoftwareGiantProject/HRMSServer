@@ -76,6 +76,21 @@ public class NetsaleDataServiceMySqlImpl implements NetsaleDataService {
 		return ResultMessage.SUCCESS;
 	}
 
+	@Override
+	public ArrayList<NetsalePO> getAllNetsale() throws RemoteException {
+		sqlManager.getConnection();
+		
+		ArrayList<NetsalePO> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM netsale";
+		List<Map<String,Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+		
+		for(Map<String,Object> map : mapList){
+			list.add(getNetsalePO(map));
+		}
+		sqlManager.releaseAll();
+		return list;
+	}
 	
 	private NetsalePO getNetsalePO(Map<String, Object> map){
 		NetsalePO po = new NetsalePO();
@@ -87,4 +102,5 @@ public class NetsaleDataServiceMySqlImpl implements NetsaleDataService {
 		
 		return po;
 	}
+
 }
