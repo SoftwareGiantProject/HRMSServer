@@ -10,6 +10,7 @@ import dataservice.orderdataservice.OrderDataService;
 import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.roomdataservice.RoomDataService;
 import dataservice.userdataservice.ClientDataService;
+import dataservice.userdataservice.LoginIn;
 import dataservice.userdataservice.NetsaleDataService;
 import dataservice.userdataservice.NetworkerDataService;
 import dataservice.userdataservice.UserDataService;
@@ -46,4 +47,5 @@ public interface DataFactory extends Remote {
 	
 	public NetworkerDataService getNetworkerData()throws RemoteException;
 	
+	public LoginIn getLoginData()throws RemoteException;
 }

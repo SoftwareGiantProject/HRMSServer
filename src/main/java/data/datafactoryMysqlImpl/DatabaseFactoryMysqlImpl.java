@@ -11,6 +11,7 @@ import data.orderdata.OrderDataServiceMysqlImpl;
 import data.promotiondata.PromotionDataServiceMysqlImpl;
 import data.roomdata.RoomDataServiceMysqlImpl;
 import data.userdata.ClientDataServiceMysqlImpl;
+import data.userdata.LoginInImpl;
 import data.userdata.NetsaleDataServiceMySqlImpl;
 import data.userdata.NetworkerDataServiceMySqlImpl;
 import data.userdata.UserDataServiceMysqlImpl;
@@ -23,6 +24,7 @@ import dataservice.orderdataservice.OrderDataService;
 import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.roomdataservice.RoomDataService;
 import dataservice.userdataservice.ClientDataService;
+import dataservice.userdataservice.LoginIn;
 import dataservice.userdataservice.NetsaleDataService;
 import dataservice.userdataservice.NetworkerDataService;
 import dataservice.userdataservice.UserDataService;
@@ -73,7 +75,7 @@ public class DatabaseFactoryMysqlImpl extends UnicastRemoteObject implements Dat
 	private WorkerDataService workerDatabase = new WorkerDataServiceMysqlImpl();
 	private NetsaleDataService netsaleDatabase = new NetsaleDataServiceMySqlImpl();
 	private NetworkerDataService networkerDatabase = new NetworkerDataServiceMySqlImpl();
-		
+	private LoginIn loginDatabase = new LoginInImpl();
 	
 	public UserDataService getUserData() {
 		return userDatabase;
@@ -103,24 +105,24 @@ public class DatabaseFactoryMysqlImpl extends UnicastRemoteObject implements Dat
 		return roomDatabase;
 	}
 
-	@Override
 	public ClientDataService getClientData() throws RemoteException {
 		return clientDatabase;
 	}
 
-	@Override
 	public WorkerDataService getWorkerData() throws RemoteException {
 		return workerDatabase;
 	}
 
-	@Override
 	public NetsaleDataService getNetsaleData() throws RemoteException {
 		return netsaleDatabase;
 	}
 
-	@Override
 	public NetworkerDataService getNetworkerData() throws RemoteException {
 		return networkerDatabase;
+	}
+
+	public LoginIn getLoginData() throws RemoteException {
+		return loginDatabase;
 	}
 
 }
