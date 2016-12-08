@@ -7,6 +7,8 @@ public class WorkerPO implements Serializable{
 	//用户编号
 		private String userId;
 		
+		//酒店id
+		private String hotel_id;
 		//用户名
 		private String userName;
 		//密码
@@ -41,6 +43,14 @@ public class WorkerPO implements Serializable{
 		
 		
 		
+		public String getHotel_id() {
+			return hotel_id;
+		}
+
+		public void setHotel_id(String hotel_id) {
+			this.hotel_id = hotel_id;
+		}
+
 		public String getUserId(){
 			return userId;
 		}

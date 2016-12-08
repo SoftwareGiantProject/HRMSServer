@@ -20,5 +20,6 @@ public interface RoomDataService extends Remote{
 	public ResultMessage modifyRoomCondition(RoomConditionDatePO po) throws RemoteException;
 	public ResultMessage deleteRoomCondition(RoomConditionDatePO po) throws RemoteException;
 	public ArrayList<RoomConditionDatePO> getAllByDate(String date) throws RemoteException;
-	
+	public ArrayList<RoomConditionDatePO> getRoomConditionPO(String hotel_id, String room_number) throws RemoteException;
+
 }

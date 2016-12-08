@@ -30,6 +30,7 @@ public class WorkerDataServiceMysqlImpl implements WorkerDataService{
 		List<Object> params = new ArrayList<>();
 		
 		params.add(po.getUserId());
+		params.add(po.getHotel_id());
 		params.add(po.getUserName());
 		params.add(po.getPassword());
 		params.add(po.getContact());
@@ -68,8 +69,9 @@ public class WorkerDataServiceMysqlImpl implements WorkerDataService{
 		params.add(po.getUserName());
 		params.add(po.getContact());
 		params.add(po.getUserId());
+		params.add(po.getHotel_id());
 		
-		String sql = "UPDATE worker SET password=?, name=?, contact=? WHERE id=?";
+		String sql = "UPDATE worker SET password=?, name=?, contact=? WHERE id=? AND hotel_id=?";
 		
 		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseAll();
@@ -98,6 +100,7 @@ public class WorkerDataServiceMysqlImpl implements WorkerDataService{
 		po.setPassword(map.get("password").toString());
 		po.setUserName(map.get("name").toString());
 		po.setContact(map.get("contact").toString());
+		po.setHotel_id(map.get("hotel_id").toString());
 		
 		return po;
 	}
