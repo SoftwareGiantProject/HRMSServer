@@ -2,6 +2,7 @@ package data.userdata;
 
 import java.util.List;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +19,7 @@ import po.CorporateMemberPO;
 import util.MemberType;
 import util.ResultMessage;
 
-public class ClientDataServiceMysqlImpl implements ClientDataService{
+public class ClientDataServiceMysqlImpl extends UnicastRemoteObject  implements ClientDataService{
 
 	SqlManager sqlManager = SqlManager.getSqlManager();
 	
@@ -127,17 +128,37 @@ public class ClientDataServiceMysqlImpl implements ClientDataService{
 	}
 
 	@Override
-	public ResultMessage registComMember(CommonMemberPO po) throws RemoteException {
+	public ResultMessage registComMember(String user_id,CommonMemberPO po) throws RemoteException {
 		MemberDataService memberDataService = DatabaseFactoryMysqlImpl.getInstance().getMemberData();;
 		
-		return memberDataService.addComMember(po);
+		ClientPO tempPO = findClient(user_id);
+		if(!tempPO.getType().equals(MemberType.NONE)){
+			return ResultMessage.FAIL;
+		}
+		else{
+			tempPO.setType(MemberType.COMMONMEMBER);
+			tempPO.setMemberId(po.getCommonMember_number());
+
+			modify(tempPO);
+			return memberDataService.addComMember(po);
+		}
 	}
 
 	@Override
-	public ResultMessage registCorMember(CorporateMemberPO po) throws RemoteException {
+	public ResultMessage registCorMember(String user_id,CorporateMemberPO po) throws RemoteException {
 		MemberDataService memberDataService = DatabaseFactoryMysqlImpl.getInstance().getMemberData();
 		
-		return memberDataService.addCorMember(po);
+		ClientPO tempPO = findClient(user_id);
+		if(tempPO.getType().equals(MemberType.CORPORATEMEMBER)){
+			return ResultMessage.FAIL;
+		}
+		else{
+			tempPO.setType(MemberType.CORPORATEMEMBER);
+			tempPO.setMemberId(po.getCorporateMember_number());
+		
+			modify(tempPO);
+			return memberDataService.addCorMember(po);
+		}
 	}
 	
 	private ClientPO getClientPO(Map<String, Object> map){

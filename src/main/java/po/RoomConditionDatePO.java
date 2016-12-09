@@ -1,10 +1,11 @@
 package po;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import util.RoomCondition;
 
-public class RoomConditionDatePO {
+public class RoomConditionDatePO implements Serializable{
 	//酒店id
 	String hotel_id;
 	

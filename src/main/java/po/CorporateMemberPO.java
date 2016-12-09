@@ -1,8 +1,10 @@
 package po;
 
+import java.io.Serializable;
+
 import util.MemberType;
 
-public class CorporateMemberPO {
+public class CorporateMemberPO implements Serializable{
 
 	//企业会员等级
 	int CorporateMember_level;

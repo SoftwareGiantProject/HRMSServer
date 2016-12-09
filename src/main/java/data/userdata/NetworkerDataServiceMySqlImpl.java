@@ -1,6 +1,7 @@
 package data.userdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +12,7 @@ import dataservice.userdataservice.NetworkerDataService;
 import po.NetworkerPO;
 import util.ResultMessage;
 
-public class NetworkerDataServiceMySqlImpl implements NetworkerDataService{
+public class NetworkerDataServiceMySqlImpl  extends UnicastRemoteObject implements NetworkerDataService{
 
 	SqlManager sqlManager = SqlManager.getSqlManager();
 	

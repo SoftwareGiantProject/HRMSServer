@@ -1,6 +1,7 @@
 package data.userdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +12,7 @@ import dataservice.userdataservice.NetsaleDataService;
 import po.NetsalePO;
 import util.ResultMessage;
 
-public class NetsaleDataServiceMySqlImpl implements NetsaleDataService {
+public class NetsaleDataServiceMySqlImpl  extends UnicastRemoteObject implements NetsaleDataService {
 
 	SqlManager sqlManager = SqlManager.getSqlManager();
 	

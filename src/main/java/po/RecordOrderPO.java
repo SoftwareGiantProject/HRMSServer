@@ -1,6 +1,8 @@
 package po;
 
-public class RecordOrderPO {
+import java.io.Serializable;
+
+public class RecordOrderPO implements Serializable{
 
 	private String order_id;
 	

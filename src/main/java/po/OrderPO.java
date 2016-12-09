@@ -1,8 +1,10 @@
 package po;
 
+import java.io.Serializable;
+
 import util.ListType;
 
-public class OrderPO {
+public class OrderPO implements Serializable{
 	private String user_id;
 	private String order_id;
 	private String hotel_id;

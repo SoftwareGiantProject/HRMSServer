@@ -1,6 +1,7 @@
 package data.userdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ import data.sqlmanager.SqlManager;
 import dataservice.userdataservice.LoginIn;
 import util.ResultMessage;
 
-public class LoginInImpl implements LoginIn{
+public class LoginInImpl extends UnicastRemoteObject  implements LoginIn{
 
 	SqlManager sqlManager = SqlManager.getSqlManager();
 	

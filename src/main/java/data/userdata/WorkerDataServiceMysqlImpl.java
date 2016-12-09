@@ -1,6 +1,7 @@
 package data.userdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +12,7 @@ import dataservice.userdataservice.WorkerDataService;
 import po.WorkerPO;
 import util.ResultMessage;
 
-public class WorkerDataServiceMysqlImpl implements WorkerDataService{
+public class WorkerDataServiceMysqlImpl extends UnicastRemoteObject  implements WorkerDataService{
 
 	SqlManager sqlManager = SqlManager.getSqlManager();
 	

@@ -1,8 +1,9 @@
 package po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class HotelEvaluationPO {
+public class HotelEvaluationPO implements Serializable{
 
 	//订单编号	
 	String order_id;

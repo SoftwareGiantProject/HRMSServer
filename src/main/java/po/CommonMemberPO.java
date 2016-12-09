@@ -1,8 +1,10 @@
 package po;
 
+import java.io.Serializable;
+
 import util.MemberType;
 
-public class CommonMemberPO {
+public class CommonMemberPO implements Serializable{
 
 	//普通会员等级
 	int CommonMember_level; 
