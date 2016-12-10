@@ -63,7 +63,7 @@ public class WorkerDataServiceImplTest {
 	*/
 	
 	/**
-	@Test modify方法已测试成功
+	@Test
 	public void testModify(){
 		WorkerPO po = new WorkerPO();
 		
@@ -71,6 +71,7 @@ public class WorkerDataServiceImplTest {
 		po.setPassword("123456");
 		po.setContact("15895870321");
 		po.setUserName("WorkerNo1");
+		po.setHotel_id("h001");
 		
 		try {
 			workerDataService.modify(po);
