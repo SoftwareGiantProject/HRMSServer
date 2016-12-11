@@ -224,6 +224,41 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		}
 	}
 
+	@Override
+	public ArrayList<OrderPO> getOrderByHotel(String hotel_id, String ListType) throws RemoteException {
+		sqlManager.getConnection();
+		
+		ArrayList<OrderPO> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM orders WHERE hotel_id=? AND listType=?";
+		
+		List<Map<String, Object>> mapList  = sqlManager.queryMulti(sql, new Object[]{hotel_id,ListType});
+		
+		for(Map<String, Object> map : mapList){
+			list.add(getOrderPO(map));
+		}
+		
+		sqlManager.releaseAll();
+		return list;
+	}
+
+	@Override
+	public ArrayList<OrderPO> getAllOrder() throws RemoteException {
+		sqlManager.getConnection();
+		
+		ArrayList<OrderPO> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM orders";
+		
+		List<Map<String,Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+		
+		for(Map<String,Object> map : mapList){
+			list.add(getOrderPO(map));
+		}
+		
+		sqlManager.releaseAll();
+		return list;
+	}
 	
 	private OrderPO getOrderPO(Map<String, Object> map){
 		OrderPO po = new OrderPO();

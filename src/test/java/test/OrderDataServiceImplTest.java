@@ -138,4 +138,23 @@ public class OrderDataServiceImplTest {
 	}
 	*/
 	
+	/**
+	@Test 根据酒店id和订单类型获得 list测试成功
+	public void testGetOrderByHotel(){
+		String hotel_id = "h001";
+		String listType = "HISTORYLIST";
+		
+		ArrayList<OrderPO> list = new ArrayList<>();
+		
+		try {
+			list = orderDataService.getOrderByHotel(hotel_id, listType);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals("201611250001", list.get(0).getOrder_id());
+		assertEquals("2016-11-27-08-11-54",list.get(1).getStartTime());
+	}
+	*/
 }
+	

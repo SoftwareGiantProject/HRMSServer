@@ -184,6 +184,45 @@ public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements Ro
 		return list;
 	}
 	
+	
+	@Override 
+	public ResultMessage modify(RoomPO room) throws RemoteException {
+		if(room == null){
+			return ResultMessage.FAIL;
+		}
+		
+		sqlManager.getConnection();
+		
+		List<Object> params = new ArrayList<>();	
+		params.add(room.getRoom_price());
+		params.add(room.getRoom_condition().toString());
+		params.add(room.getHotel_id());
+		params.add(room.getRoom_number());
+		
+		String sql = "UPDATE room SET price=?, currentCondition=? WHERE hotel_id=? AND room_id=?";
+		
+		sqlManager.executeUpdateByList(sql, params);
+		sqlManager.releaseAll();
+		return ResultMessage.SUCCESS;
+	}
+	
+
+	@Override
+	public ArrayList<RoomPO> getAllRooms() throws RemoteException {
+		sqlManager.getConnection();
+		
+		ArrayList<RoomPO> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM room";
+		
+		List<Map<String, Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+		
+		for(Map<String,Object> map : mapList){
+			list.add(getRoomPO(map));
+		}
+		return list;
+	}
+	
 	private RoomPO getRoomPO(Map<String,Object> map){
 		RoomPO po = new RoomPO();
 		
@@ -192,7 +231,7 @@ public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements Ro
 		po.setRoom_type(map.get("type").toString());
 		po.setRoom_price(Integer.parseInt(map.get("price").toString()));
 		
-		String roomCondition = map.get("condition").toString();
+		String roomCondition = map.get("currentCondition").toString();
 		switch(roomCondition){
 		case"UNRESERVED":
 			po.setRoom_condition(RoomCondition.UNRESERVED);

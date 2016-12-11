@@ -26,4 +26,6 @@ public interface HotelDataService extends Remote{
 	public ResultMessage addHotel(HotelPO po) throws RemoteException;
 	public ResultMessage modifyHotel(HotelPO po) throws RemoteException;
 	public ResultMessage evaluateHotel(HotelEvaluationPO po) throws RemoteException;
+	public ArrayList<String> getAllCity() throws RemoteException;
+	public ArrayList<String> getAllAreaByCity(String city) throws RemoteException;
 }

@@ -198,6 +198,52 @@ public class HotelDataServiceImplTest {
 		
 		assertEquals(3, list.get(0).getHotelLevel());
 	}
+	
+	/**
+	 * @Test 获得所有城市方法测试成功
+	public void testGetAllCity(){
+		ArrayList<String> list = new ArrayList<>();
+		
+		try {
+			list = hotelDataService.getAllCity();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		for(int i = 0; i < list.size();i++){
+			System.out.println(list.get(i));
+		}
+	}
+	*/
+	
+	/**
+	@Test 根据城市获得商圈方法 测试成功
+	public void testGetAllAreaByCity() throws RemoteException{
+		ArrayList<String>  list1 = new ArrayList<>();
+		ArrayList<String>  list2 = new ArrayList<>();
+		ArrayList<String>  list3 = new ArrayList<>();
+		
+		String city1 = "南京";
+		String city2 = "上海";
+		String city3 = "北京";
+		
+		list1 = hotelDataService.getAllAreaByCity(city1);
+		list2 = hotelDataService.getAllAreaByCity(city2);
+		list3 = hotelDataService.getAllAreaByCity(city3);
+		
+		for(int i = 0; i < list1.size(); i++){
+			System.out.println(list1.get(i));
+		}
+		
+		for(int i = 0; i < list2.size(); i++){
+			System.out.println(list2.get(i));
+		}
+		
+		for(int i = 0; i < list3.size(); i++){
+			System.out.println(list3.get(i));
+		}
+	}
+	*/
 }
 
 

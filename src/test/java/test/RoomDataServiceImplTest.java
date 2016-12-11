@@ -146,5 +146,38 @@ public class RoomDataServiceImplTest {
 		assertEquals(RoomCondition.CHECKIN, list.get(1).getRoomCondition());
 		assertEquals(RoomCondition.RESERVED, list.get(0).getRoomCondition());
 	}
+	
+	/**
+	@Test 修改房间信息 测试成功
+	public void testModifyRoom(){
+		RoomPO po = new RoomPO();
+		
+		po.setHotel_id("h001");
+		po.setRoom_number("001");
+		po.setRoom_price(180);
+		po.setRoom_condition(RoomCondition.CHECKIN);
+		
+		try {
+			roomDataService.modify(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	*/
+	
+	/**
+	@Test 获得所有房间测试成功
+	public void testGetAllRooms(){
+		ArrayList<RoomPO> list = new ArrayList<>();
+		
+		try {
+			list = roomDataService.getAllRooms();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		assertEquals(18, list.size());
+	}
+	*/
 }
 

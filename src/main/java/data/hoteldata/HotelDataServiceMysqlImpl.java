@@ -235,6 +235,43 @@ public class HotelDataServiceMysqlImpl extends UnicastRemoteObject  implements H
 		return list;
 	}
 	
+
+	@Override
+	public ArrayList<String> getAllCity() throws RemoteException {
+		sqlManager.getConnection();
+		
+		ArrayList<String> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM city";
+		
+		List<Map<String,Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+		
+		for(Map<String,Object> map : mapList){
+			list.add(map.get("city").toString());
+		}
+		
+		sqlManager.releaseAll();
+		return list;
+	}
+
+	@Override
+	public ArrayList<String> getAllAreaByCity(String city) throws RemoteException {
+		sqlManager.getConnection();
+		
+		ArrayList<String> list = new ArrayList<>();
+				
+		String sql = "SELECT * FROM area WHERE city=?";
+		
+		List<Map<String,Object>> mapList = sqlManager.queryMulti(sql, new Object[]{city});
+		
+		for(Map<String, Object> map : mapList){
+			list.add(map.get("area").toString());
+		}
+		
+		sqlManager.releaseAll();
+		return list;
+	}
+
 	private String getNameById(String hotel_id){
 		HotelPO po = new HotelPO();
 	
@@ -284,5 +321,4 @@ public class HotelDataServiceMysqlImpl extends UnicastRemoteObject  implements H
 		
 		return po;
 	}
-
 }
