@@ -151,6 +151,21 @@ public class PromotionDataServiceMysqlImpl extends UnicastRemoteObject  implemen
 		return ResultMessage.SUCCESS;
 	}
 
+	@Override
+	public ArrayList<PromotionPO> findPromotionById(String id) throws RemoteException {
+		sqlManager.getConnection();
+		
+		ArrayList<PromotionPO> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM promotion WHERE seller=?";
+		List<Map<String,Object>> mapList = sqlManager.queryMulti(sql, new Object[]{id});
+		
+		for(Map<String,Object> map : mapList){
+			list.add(getPromotionPO(map));
+		}
+		return list;
+	}
+	
 	private MemberPromotionPO getMemberPromotionPO(Map<String, Object> map){
 		MemberPromotionPO po = new MemberPromotionPO();
 		
@@ -173,4 +188,5 @@ public class PromotionDataServiceMysqlImpl extends UnicastRemoteObject  implemen
 		
 		return po;
 	}
+
 }

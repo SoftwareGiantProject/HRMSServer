@@ -14,6 +14,7 @@ public interface ClientDataService extends Remote{
 	public ResultMessage add(ClientPO po)throws RemoteException;
 	public ClientPO findClient(String id)throws RemoteException;
 	public ArrayList<ClientPO> getAllClient()throws RemoteException;
+	public ResultMessage checkExist(String id)throws RemoteException;
 	
 	public ResultMessage registComMember(String user_id,CommonMemberPO po)throws RemoteException;
 	public ResultMessage registCorMember(String user_id,CorporateMemberPO po)throws RemoteException;

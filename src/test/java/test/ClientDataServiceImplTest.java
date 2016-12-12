@@ -15,6 +15,7 @@ import po.ClientPO;
 import po.CommonMemberPO;
 import po.CorporateMemberPO;
 import util.MemberType;
+import util.ResultMessage;
 
 public class ClientDataServiceImplTest {
 	
@@ -142,4 +143,13 @@ public class ClientDataServiceImplTest {
 		}
 	}
 	*/
+	
+	@Test
+	public void testCheckExist() throws RemoteException{
+		String id1 = "151250061";
+		String id2 = "122131221";
+		
+		assertEquals(ResultMessage.SUCCESS, clientDataService.checkExist(id1));
+		assertEquals(ResultMessage.FAIL, clientDataService.checkExist(id2));
+	}
 }

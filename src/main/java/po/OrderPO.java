@@ -19,7 +19,9 @@ public class OrderPO implements Serializable{
 	private int people;
 	private boolean hasChild;
 	private ListType listType;
+	private int order_price;
 
+	
 	//各种可能用到的构造函数
 	public OrderPO(){
 		
@@ -44,6 +46,12 @@ public class OrderPO implements Serializable{
 	
 	
 	//各种get和set
+	public int getOrder_price() {
+		return order_price;
+	}
+	public void setOrder_price(int order_price) {
+		this.order_price = order_price;
+	}
 	public String getRoomType() {
 		return roomType;
 	}

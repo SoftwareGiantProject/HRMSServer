@@ -47,6 +47,7 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		params.add(order.getOrder_id());
 		params.add(order.getUser_id());
 		params.add(order.getHotel_id());
+		params.add(order.getOrder_price());
 		params.add(order.getStartTime());
 		params.add(order.getEndTime());
 		params.add(order.getDeadline());
@@ -82,6 +83,7 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		
 		params.add(order.getUser_id());
 		params.add(order.getHotel_id());
+		params.add(order.getOrder_price());
 		params.add(order.getStartTime());
 		params.add(order.getEndTime());
 		params.add(order.getDeadline());
@@ -95,7 +97,7 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		params.add("UNDOLIST");
 		params.add(order.getOrder_id());
 		
-		String sql = "UPDATE orders SET user_id=?,hotel_id=?,startTime=?,endTime=?,deadline=?,executeTime=?,predictCheckinTime=?,predictCheckoutTime=?,roomtype=?,number=?,people=?,child=?,listType=? WHERE order_id=?";
+		String sql = "UPDATE orders SET user_id=?,hotel_id=?,price=?,startTime=?,endTime=?,deadline=?,executeTime=?,predictCheckinTime=?,predictCheckoutTime=?,roomtype=?,number=?,people=?,child=?,listType=? WHERE order_id=?";
 		
 		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseAll();
@@ -113,6 +115,7 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		
 		params.add(order.getUser_id());
 		params.add(order.getHotel_id());
+		params.add(order.getOrder_price());
 		params.add(order.getStartTime());
 		params.add(order.getEndTime());
 		params.add(order.getDeadline());
@@ -126,7 +129,7 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		params.add(order.getListType().toString());
 		params.add(order.getOrder_id());
 		
-		String sql = "UPDATE orders SET user_id=?,hotel_id=?,startTime=?,endTime=?,deadline=?,executeTime=?,predictCheckinTime=?,predictCheckoutTime=?,roomtype=?,number=?,people=?,child=?,listType=? WHERE order_id=?";
+		String sql = "UPDATE orders SET user_id=?,hotel_id=?,price=?,startTime=?,endTime=?,deadline=?,executeTime=?,predictCheckinTime=?,predictCheckoutTime=?,roomtype=?,number=?,people=?,child=?,listType=? WHERE order_id=?";
 		
 		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseAll();
@@ -266,6 +269,7 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		po.setOrder_id(map.get("order_id").toString());
 		po.setUser_id(map.get("user_id").toString());
 		po.setHotel_id(map.get("hotel_id").toString());
+		po.setOrder_price(Integer.parseInt(map.get("price").toString()));
 		po.setStartTime(map.get("startTime").toString());
 		po.setEndTime(map.get("endTime").toString());
 		po.setDeadline(map.get("deadline").toString());

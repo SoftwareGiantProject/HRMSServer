@@ -22,7 +22,7 @@ public class RoomPO implements Serializable{
 	String Hotel_id;
 	
 	
-	public RoomPO(String rt,int rp, String rnb, RoomCondition rc, String ho){
+	public RoomPO(String rt,int rp, String rnb,String ho, RoomCondition rc){
 		
 		Room_type = rt;
 		Room_price = rp;

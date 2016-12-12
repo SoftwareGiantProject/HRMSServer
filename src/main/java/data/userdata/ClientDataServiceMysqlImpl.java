@@ -161,6 +161,21 @@ public class ClientDataServiceMysqlImpl extends UnicastRemoteObject  implements 
 		}
 	}
 	
+
+	@Override
+	public ResultMessage checkExist(String id) throws RemoteException {
+		sqlManager.getConnection();
+		
+		String sql = "SELECT * FROM client WHERE id=?";
+		
+		Map<String,Object> map = sqlManager.querySimple(sql, new Object[]{id});
+		if(map.isEmpty()){
+			return ResultMessage.FAIL;
+		}
+		else
+			return ResultMessage.SUCCESS;
+	}
+	
 	private ClientPO getClientPO(Map<String, Object> map){
 		
 		ClientPO po = new ClientPO();

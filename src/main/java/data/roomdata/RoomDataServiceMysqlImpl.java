@@ -18,6 +18,7 @@ import java.util.Map;
 
 public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements RoomDataService{
 
+	private static final long serialVersionUID = 1L;
 	
 	private SqlManager sqlManager = SqlManager.getSqlManager();
 	
@@ -257,13 +258,13 @@ public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements Ro
 		String roomCondition = map.get("roomcondition").toString();
 		switch(roomCondition){
 		case"UNRESERVED":
-			po.setRoomCondition(RoomCondition.UNRESERVED);
+			po.setRoomConditon(RoomCondition.UNRESERVED);
 			break;
 		case"RESERVED":
-			po.setRoomCondition(RoomCondition.RESERVED);
+			po.setRoomConditon(RoomCondition.RESERVED);
 			break;
 		case"CHECKIN":
-			po.setRoomCondition(RoomCondition.CHECKIN);
+			po.setRoomConditon(RoomCondition.CHECKIN);
 			break;
 		}
 		

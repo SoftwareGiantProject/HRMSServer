@@ -39,7 +39,7 @@ public class CreditDataServiceMysqlImpl extends UnicastRemoteObject  implements 
 		ArrayList<CreditPO> list;
 	    list = getHistoryCredit(user_id);
 	    
-	    po = list.get(list.size());
+	    po = list.get(list.size()-1);
 	    sqlManager.releaseAll();
 		return po;
 	}
