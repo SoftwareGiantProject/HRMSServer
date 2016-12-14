@@ -8,18 +8,21 @@ public class HotelEvaluationPO implements Serializable{
 	//订单编号	
 	String order_id;
 	
-	//客户编号
+	//用户id
 	String user_id;
 	
-	//评价时间
+	//评价日期
 	String date;
 	
 	//评价内容
 	String data;
 	
-	//评价星级
+	//评级
 	int level;
 	
+	public HotelEvaluationPO() {
+		// TODO Auto-generated constructor stub
+	}
 	public HotelEvaluationPO(String order_id, String user_id, String date, String data, int level){
 
 		this.order_id = order_id;
@@ -29,10 +32,6 @@ public class HotelEvaluationPO implements Serializable{
 		this.level = level;
 	}
 
-	public HotelEvaluationPO(){
-		
-	}
-	
 	public String getOrder_id() {
 		return order_id;
 	}

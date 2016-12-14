@@ -26,6 +26,8 @@ import util.ResultMessage;
  *
  */
 public class HotelDataServiceMysqlImpl extends UnicastRemoteObject  implements HotelDataService{
+
+	private static final long serialVersionUID = 1L;
 	
 	SqlManager sqlManager = SqlManager.getSqlManager();
 	
@@ -58,6 +60,7 @@ public class HotelDataServiceMysqlImpl extends UnicastRemoteObject  implements H
 		
 		params.add(po.getHotelId());
 		params.add(po.getHotelName());
+		params.add(po.getCity());
 		params.add(po.getHotelLevel());
 		params.add(po.getHotelScore());
 		params.add(po.getHotelAddress());
@@ -84,6 +87,7 @@ public class HotelDataServiceMysqlImpl extends UnicastRemoteObject  implements H
 		List<Object> params = new ArrayList<Object>();
 		
 		params.add(po.getHotelName());
+		params.add(po.getCity());
 		params.add(po.getHotelLevel());
 		params.add(po.getHotelScore());
 		params.add(po.getHotelAddress());
@@ -93,7 +97,7 @@ public class HotelDataServiceMysqlImpl extends UnicastRemoteObject  implements H
 		params.add(po.getHotelRoom());
 		params.add(po.getHotelId());
 		
-		String sql = "UPDATE hotel SET name=? , level=? , score=? , address=? , area=? , intro=? , serve= ? , room=? WHERE id=?";
+		String sql = "UPDATE hotel SET name=? ,city=?, level=? , score=? , address=? , area=? , intro=? , serve= ? , room=? WHERE id=?";
 
 		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseAll();
@@ -311,6 +315,7 @@ public class HotelDataServiceMysqlImpl extends UnicastRemoteObject  implements H
 		HotelPO po = new HotelPO();
 		po.setHotelId(map.get("id").toString());
 		po.setHotelName(map.get("name").toString());
+		po.setCity(map.get("city").toString());
 		po.setHotelLevel(Integer.parseInt(map.get("level").toString()));
 		po.setHotelScore(Double.parseDouble(map.get("score").toString()));
 		po.setHotelAddress(map.get("address").toString());

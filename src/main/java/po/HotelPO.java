@@ -31,9 +31,12 @@ public class HotelPO implements Serializable{
 	//酒店客房类型
 	String hotel_room;
 	
+	//城市
+	String city;
 	
-	public HotelPO(String hotel_id,String hotel_name,String hotel_address,String hotel_area,String hotel_intro,
-			String hotel_serve,String hotel_room,int hotel_level,double hotel_score){
+	
+	public HotelPO(String hotel_id,String hotel_name,String hotel_address,String hotel_area,int hotel_level,double hotel_score,String hotel_intro,
+			String hotel_serve,String hotel_room,String city){
 		this.hotel_id = hotel_id;
 		this.hotel_address = hotel_address;
 		this.hotel_area = hotel_area;
@@ -43,12 +46,20 @@ public class HotelPO implements Serializable{
 		this.hotel_serve = hotel_serve;
 		this.hotel_level = hotel_level;
 		this.hotel_score = hotel_score;
+		this.city = city;
 	}
 	
 	public HotelPO(){
 		
 	}
 	
+	public void setCity(String city){
+		this.city = city;
+	}
+	
+	public String getCity(){
+		return city;
+	}
 	
 	public int getHotelLevel(){
 		return hotel_level;

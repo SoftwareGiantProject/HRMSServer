@@ -7,7 +7,7 @@ public class PromotionPO implements Serializable{
 	private String promotionName;
 	
 	//促销对象
-    private String promotionObject;
+	private String promotionObject;
 	
 	//折扣力度
 	private double count;
@@ -15,27 +15,22 @@ public class PromotionPO implements Serializable{
 	//持续时间
 	private String time;
 	
-	//促销策略商家
+	//商家
 	private String seller;
 	
 	public PromotionPO(){
 		
 	}
-	public PromotionPO(String promotionName,String promotionObject,double count,String time){
+	public PromotionPO(String promotionName,String promotionObject,double count,String time,String seller){
 		this.promotionName=promotionName;
 		this.promotionObject=promotionObject;
 		this.count=count;
 		this.time=time;
+		this.seller= seller;
 	}
 	
 	
 	//get&set
-	public String getSeller() {
-		return seller;
-	}
-	public void setSeller(String seller) {
-		this.seller = seller;
-	}
 	public PromotionPO getPromotionPO(){
 		return this;
 	}
@@ -52,9 +47,12 @@ public class PromotionPO implements Serializable{
 		return time;
 	}
 	
-	
-	
-	
+	public String getSeller() {
+		return seller;
+	}
+	public void setSeller(String seller) {
+		this.seller = seller;
+	}
 	
 	public void setPromotionName(String name){
 		this.promotionName=name;
