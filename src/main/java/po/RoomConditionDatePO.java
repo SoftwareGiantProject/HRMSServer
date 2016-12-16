@@ -23,6 +23,10 @@ public class RoomConditionDatePO implements Serializable{
 
 		//房间状态״̬
 		RoomCondition roomcondition;
+		
+		
+		//订单编号
+		String order_id;
 
 			
 
@@ -34,7 +38,7 @@ public class RoomConditionDatePO implements Serializable{
 
 			
 
-		public RoomConditionDatePO(String hotel_id,String rd, String rn, RoomCondition rc){
+		public RoomConditionDatePO(String hotel_id,String rd, String rn, RoomCondition rc, String or){
 
 			
 
@@ -46,13 +50,18 @@ public class RoomConditionDatePO implements Serializable{
 
 		    this.roomcondition = rc;
 
+		    this.order_id = or;
 				
 
 		}
 
 		
 
-		
+		public void setOrder_id(String order_id){
+			
+			this.order_id = order_id;
+			
+		}
 
 		public void setHotel_id(String hotel_id){
 
@@ -87,6 +96,10 @@ public class RoomConditionDatePO implements Serializable{
 		}
 
 
+		public String getOrder_id(){
+			return order_id;
+		}
+		
 		public String getHotel_id(){
 
 			return hotel_id;

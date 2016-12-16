@@ -97,6 +97,7 @@ public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements Ro
 		params.add(po.getRoomDate());
 		params.add(po.getRoomNumber());
 		params.add(po.getRoomCondition().toString());
+		params.add(po.getOrder_id());
 		
 		String sql = sqlManager.appendSQL("INSERT INTO roomCondition VALUES", params.size());
 		
@@ -116,11 +117,12 @@ public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements Ro
 		List<Object> params = new ArrayList<>();
 
 		params.add(po.getRoomCondition().toString());
+		params.add(po.getOrder_id());
 		params.add(po.getHotel_id());
 		params.add(po.getRoomDate());
 		params.add(po.getRoomNumber());
 		
-		String sql = "UPDATE roomCondition SET roomcondition=? WHERE hotel_id=? AND roomdate=? AND room_id=?";
+		String sql = "UPDATE roomCondition SET roomcondition=?,order_id=? WHERE hotel_id=? AND roomdate=? AND room_id=?";
 		
 		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseConnection();
@@ -224,6 +226,24 @@ public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements Ro
 		return list;
 	}
 	
+
+	@Override
+	public ArrayList<RoomConditionDatePO> getRoomConditionByOrder(String order_id) throws RemoteException {
+		sqlManager.getConnection();
+		ArrayList<RoomConditionDatePO> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM roomcondition WHERE order_id=?";
+		
+		List<Map<String, Object>> mapList = sqlManager.queryMulti(sql, new Object[]{order_id});
+		
+		for(Map<String,Object> map : mapList ){
+			list.add(getRoomConditionDatePO(map));
+		}
+		
+		sqlManager.releaseAll();
+		return list;
+	}
+
 	@Override
 	public ArrayList<RoomConditionDatePO> getAllRoomCondition() throws RemoteException {
 		sqlManager.getConnection();
@@ -285,9 +305,11 @@ public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements Ro
 			po.setRoomConditon(RoomCondition.CHECKIN);
 			break;
 		}
+		po.setOrder_id(map.get("order_id").toString());
 		
 		return po;
 	}
+
 
 
 }
