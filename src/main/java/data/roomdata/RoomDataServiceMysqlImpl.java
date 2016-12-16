@@ -224,6 +224,24 @@ public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements Ro
 		return list;
 	}
 	
+	@Override
+	public ArrayList<RoomConditionDatePO> getAllRoomCondition() throws RemoteException {
+		sqlManager.getConnection();
+		
+		ArrayList<RoomConditionDatePO> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM roomcondition";
+		
+		List<Map<String,Object>> mapList = sqlManager.queryMulti(sql, new Object[]{});
+		
+		for(Map<String,Object> map : mapList){
+			list.add(getRoomConditionDatePO(map));
+		}
+		
+		sqlManager.releaseAll();
+		return list;
+	}
+
 	private RoomPO getRoomPO(Map<String,Object> map){
 		RoomPO po = new RoomPO();
 		
@@ -270,5 +288,6 @@ public class RoomDataServiceMysqlImpl extends UnicastRemoteObject  implements Ro
 		
 		return po;
 	}
+
 
 }

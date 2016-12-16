@@ -9,19 +9,16 @@ import util.*;
 
 
 public interface RoomDataService extends Remote{
-
-
 	
 	public ArrayList<RoomPO> findRoom(String hotel_id,String room_type)throws RemoteException;
 
 	public ResultMessage add(RoomPO room) throws RemoteException;
 
 	public ResultMessage modify(RoomPO room) throws RemoteException;
-	
 
 	public ArrayList<RoomPO> getAllRoom(String hotel_id)throws RemoteException;
 
-
+	public ArrayList<RoomConditionDatePO> getAllRoomCondition()throws RemoteException;
 
 	public ResultMessage addRoomCondition(RoomConditionDatePO po)throws RemoteException;
 

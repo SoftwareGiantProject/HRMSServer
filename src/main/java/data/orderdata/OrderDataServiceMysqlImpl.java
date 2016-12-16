@@ -47,7 +47,7 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		params.add(order.getOrder_id());
 		params.add(order.getUser_id());
 		params.add(order.getHotel_id());
-		params.add(order.getOrder_price());
+		params.add(order.getOrderPrice());
 		params.add(order.getStartTime());
 		params.add(order.getEndTime());
 		params.add(order.getDeadline());
@@ -62,6 +62,7 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		
 		String sql = sqlManager.appendSQL("INSERT INTO orders VALUES", params.size());
 
+		addRecordOrder(order);
 		sqlManager.executeUpdateByList(sql, params);
 		sqlManager.releaseConnection();
 		
@@ -83,7 +84,7 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		
 		params.add(order.getUser_id());
 		params.add(order.getHotel_id());
-		params.add(order.getOrder_price());
+		params.add(order.getOrderPrice());
 		params.add(order.getStartTime());
 		params.add(order.getEndTime());
 		params.add(order.getDeadline());
@@ -115,7 +116,7 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		
 		params.add(order.getUser_id());
 		params.add(order.getHotel_id());
-		params.add(order.getOrder_price());
+		params.add(order.getOrderPrice());
 		params.add(order.getStartTime());
 		params.add(order.getEndTime());
 		params.add(order.getDeadline());
@@ -263,13 +264,31 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		return list;
 	}
 	
+	
+	private void addRecordOrder(OrderPO po){
+		String sql = "INSERT INTO recordorder VALUES";
+		
+		List<Object> params = new ArrayList<>();
+		
+		params.add(po.getOrder_id());
+		params.add(po.getUser_id());
+		params.add(po.getHotel_id());
+		
+		Map<String,Object> map = sqlManager.querySimple("SELECT * FROM hotel WHERE id=?", new Object[]{po.getHotel_id()});
+		
+		
+		params.add(map.get("name").toString());
+		
+		sql = sqlManager.appendSQL(sql, params.size());
+		sqlManager.executeUpdateByList(sql, params);
+	}
 	private OrderPO getOrderPO(Map<String, Object> map){
 		OrderPO po = new OrderPO();
 		
 		po.setOrder_id(map.get("order_id").toString());
 		po.setUser_id(map.get("user_id").toString());
 		po.setHotel_id(map.get("hotel_id").toString());
-		po.setOrder_price(Integer.parseInt(map.get("price").toString()));
+		po.setOrderPrice(Integer.parseInt(map.get("price").toString()));
 		po.setStartTime(map.get("startTime").toString());
 		po.setEndTime(map.get("endTime").toString());
 		po.setDeadline(map.get("deadline").toString());
