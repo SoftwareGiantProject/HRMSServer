@@ -32,7 +32,7 @@ public class LoginTest {
 		String id4 = "n001", password4 = "itisnetworker";
 		
 		assertEquals(ResultMessage.SUCCESS,login.login(id1, password1));
-		assertEquals(ResultMessage.SUCCESS,login.login(id2, password2));
+		assertEquals(ResultMessage.FAIL,login.login(id2, password2));
 		assertEquals(ResultMessage.FAIL, login.login(id3, password3));
 		assertEquals(ResultMessage.SUCCESS,login.login(id4, password4));
 	}

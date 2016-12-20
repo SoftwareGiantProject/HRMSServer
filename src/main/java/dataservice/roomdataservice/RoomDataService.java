@@ -32,6 +32,8 @@ public interface RoomDataService extends Remote{
 	
 	public ArrayList<RoomConditionDatePO> getRoomConditionPO(String hotel_id, String room_number) throws RemoteException;
 
+	public ArrayList<RoomConditionDatePO> getRoomConditionPOByHotelId(String hotel_id)throws RemoteException;
+	
 	public ArrayList<RoomPO> getAllRooms()throws RemoteException;
 	
 }
