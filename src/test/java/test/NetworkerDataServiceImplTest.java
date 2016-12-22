@@ -24,7 +24,7 @@ public class NetworkerDataServiceImplTest {
 		}
 	}
 
-	/**
+	
 	@Test
 	public void testFind(){
 		String id = "n001";
@@ -37,10 +37,14 @@ public class NetworkerDataServiceImplTest {
 			e.printStackTrace();
 		}
 		
+//		System.out.println(po.getPassword());
+//		System.out.println(po.getContact());
+//		System.out.println(po.getUserName());
+//		System.out.println(po.getUserId());
 		assertEquals("networker",po.getPassword());
 		assertEquals("networker@gmail.com", po.getContact());
 	}
-	*/
+	
 	
 	/**
 	@Test modify方法已测试成功
