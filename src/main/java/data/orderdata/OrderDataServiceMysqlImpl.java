@@ -245,7 +245,25 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		sqlManager.releaseAll();
 		return list;
 	}
-
+	
+	@Override
+	public ArrayList<OrderPO> getALLOrderByHotel(String hotel_id) throws RemoteException {
+		sqlManager.getConnection();
+		
+		ArrayList<OrderPO> list = new ArrayList<>();
+		
+		String sql = "SELECT * FROM orders WHERE hotel_id=?";
+		
+		List<Map<String,Object>> mapList = sqlManager.queryMulti(sql, new Object[]{hotel_id});
+		
+		for(Map<String,Object> map : mapList){
+			list.add(getOrderPO(map));
+		}
+		
+		sqlManager.releaseAll();
+		return list;
+	}
+	
 	@Override
 	public ArrayList<OrderPO> getAllOrder() throws RemoteException {
 		sqlManager.getConnection();
@@ -321,5 +339,7 @@ public class OrderDataServiceMysqlImpl extends UnicastRemoteObject  implements O
 		
 		return po;
 	}
+
+	
 
 }

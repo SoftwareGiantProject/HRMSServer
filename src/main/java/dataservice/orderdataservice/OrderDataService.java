@@ -16,6 +16,7 @@ public interface OrderDataService extends Remote{
 
 	public ArrayList<OrderPO> getOrderByHotel(String hotel_id, String ListType) throws RemoteException;
 
+	public ArrayList<OrderPO> getALLOrderByHotel(String hotel_id)throws RemoteException;
 	
 	public ArrayList<OrderPO> getOrderByHotel(String hotel_id)throws RemoteException;
 
@@ -26,5 +27,7 @@ public interface OrderDataService extends Remote{
 	public ResultMessage modifyOrder(OrderPO order) throws RemoteException;
 	
 	public ArrayList<OrderPO> getAllOrder() throws RemoteException;
+	
+	
 
 }
