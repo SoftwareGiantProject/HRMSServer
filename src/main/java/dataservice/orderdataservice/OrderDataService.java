@@ -28,6 +28,6 @@ public interface OrderDataService extends Remote{
 	
 	public ArrayList<OrderPO> getAllOrder() throws RemoteException;
 	
-	
+	public ArrayList<OrderPO> getAllOrderByClientHotel(String client_id, String hotel_id) throws RemoteException;
 
 }
